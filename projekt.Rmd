@@ -9,30 +9,17 @@ knitr::opts_chunk$set(echo = TRUE)
 ``` {r include = FALSE}
 library(MASS)
 data(Boston)
-?Boston
 ```
-```{r}
-par(mfrow=c(2,2)) 
-qqnorm(Boston$crim, main="per capita crime rate by town")
-qqline(Boston$crim, col = "red", lwd = 2)
 
-qqnorm(Boston$zn, main="proportion of residential land zoned")
-qqline(Boston$zn, col = "red", lwd = 2)
-
-qqnorm(Boston$indus, main="proportion of non-retail business")
-qqline(Boston$indus, col = "red", lwd = 2)
-
-qqnorm(Boston$chas, main="Charles River dummy variable.")
-qqline(Boston$chas, col = "red", lwd = 2)
+```{r child = 'julia_analyse.Rmd'}
 ```
-<!-- 
-Julia
--->
-
-<!--
-Tobias
--->
-
-<!--
-Markus
--->
+```{r child = 'tobias_analyse.Rmd'}
+```
+```{r child = 'markus_analyse.Rmd'}
+```
+```{r child = 'julia_main.Rmd'}
+```
+```{r child = 'tobias_main.Rmd'}
+```
+```{r child = 'markus_main.Rmd'}
+```
