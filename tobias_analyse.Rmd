@@ -15,6 +15,7 @@
 Crim beschreibt die Verbrechensrate pro Einwohner einer Stadt. Die Größe lässt sich gut mit einer Pareto-Verteilung beschreiben. Die Parameter errechnen sich wie folgt:
 $$ \hat \xi = min_{1 \leq i \leq n} \, x_i = 0.00632$$
 $$ \hat \lambda = \frac{n}{\sum_{i=1}^n log \Big ( \frac{x_i}{\hat \xi}\Big)} =  0.00645905 $$
+Die Pareto-Verteilung ereignet sich gut für Datensätze die sich über mehrere Größenordnungen erstrecken. Das ist hier der Fall, da $\frac{max}{min} \approx 14000$ ist. Die Paretto-Verteilund ist jedoch auf dem Interval $(0, \infty]$ definiert ist, und unsere Daten nur im Interval $[0, 100]$ auftreten können könnte man denken, dass hier auch eine Exponentialverteilung mit $\tau = \frac{1}{\overline X} = 0.2767382$ zur Beschreibung verwendet werden kann. Jedoch fällt diese Kurve zu schnell ab und die Verteilungsfunktion erzeugt bereits bei $F(17)$ Wahrscheinlichkeiten jenseits von 99%.
 </div>
 </td></tr>
 <tr><td>
