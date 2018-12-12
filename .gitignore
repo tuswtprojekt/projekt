@@ -42,4 +42,4 @@ rsconnect/
 /*_files/
 
 # HTML
-.html
+*.html

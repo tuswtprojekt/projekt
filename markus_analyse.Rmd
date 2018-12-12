@@ -1,19 +1,99 @@
-Some text
-<!-- rm,age,dis,rad,tax -->
-```{r echo = FALSE}
-par(mfrow=c(3,2)) 
-qqnorm(Boston$rm, main="average number of rooms")
-qqline(Boston$rm, col = "red", lwd = 2)
-
-qqnorm(Boston$age, main="proportion of owner-occupied")
-qqline(Boston$age, col = "red", lwd = 2)
-
-qqnorm(Boston$dis, main="proportion of non-retail business")
-qqline(Boston$dis, col = "red", lwd = 2)
-
-qqnorm(Boston$rad, main="Charles River dummy variable")
-qqline(Boston$rad, col = "red", lwd = 2)
-
-qqnorm(Boston$tax, main="full-value property-tax")
-qqline(Boston$tax, col = "red", lwd = 2)
+<!-- Boston$rm -->
+<table>
+<tr><td>
+<div style="padding: 20px">
+<div style="float:left; position:relative; width:50%">
+```{r echo=FALSE}
+  plot(density(Boston$rm), col=3, main="Dichte von rm") # paretto
+  stripchart(Boston$rm,add=TRUE,pch=16,cex=.03,at=-0.00013,method="stack",col=8)
+  m <- mean(Boston$rm)
+  s <-  sd(Boston$rm)
+  curve(dnorm(x,m,s),add=TRUE,lwd=1, col="red")
+  box() 
 ```
+</div>
+<div style="margin-top: 5%">
+Der rm wert des Datensatzes boston beschreibt die durchschnittliche Nummer an Räumen von Wohnungen in Boston. Die Verteilung der Daten lässt sich gut mit einer Normalverteilung (siehe rote line) darstellen.
+Die Formel für die Normalverteilung ist: $$\frac{1}{\sigma\sqrt{2\pi}} * e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}$$
+Wobei $\mu \in \mathbb{R}$ den Mittelwert und $\sigma > 0$ die Varianz darstellet.
+Bei dieser Verteilung sind die Werte: $\mu$ = 6.285 und $\sigma$ = 0.702
+</div>
+</div>
+</td></tr>
+<tr><td>
+<!-- Boston$age -->
+<div style="padding: 20px">
+<div style="float:left; position:relative; width:50%">
+```{r echo=FALSE}
+  hist(Boston$age, main="Dichte von age") #f verteilung
+  box() 
+```
+</div>
+<div style="margin-top: 5%">
+Der age wert des Datensatzes Boston beschreibt den Anteil der Eigentumswohnungen, die vor 1940 gebaut wurden. Diese Werte stellen stellen keine konkrete Verteilung dar.
+</div>
+</div>
+</td></tr>
+<tr><td>
+<!-- Boston$dis -->
+<div style="padding: 20px">
+<div style="float:left; position:relative; width:50%">
+```{r echo=FALSE}
+  q1 = quantile(Boston$dis,0.1);
+  q9 = quantile(Boston$dis,0.9);
+  mlog <- (log(q1) + log(q9)) / 2
+  percentile <- 0.1
+  slog <- (log(q1) - mlog) / qnorm(percentile)
+  plot(density(Boston$dis), col=3, main="Dichte von dis") #f verteilung
+  stripchart(Boston$dis,add=TRUE,pch=16,cex=.03,at=-0.00013,method="stack",col=8)
+  curve(dlnorm(x, meanlog = mlog, sdlog = slog, log = FALSE),add=TRUE,lwd=1, col="red")
+  box() 
+```
+``` {r echo = FALSE}
+qqnorm(sapply(Boston$dis, function(x) log(x)), main="qq norm dis")
+qqline(sapply(Boston$dis, function(x) log(x)), col = "red", lwd = 2)
+```
+</div>
+<div style="margin-top: 5%">
+Der dis wert des Datensatzes Boston beschreibt den gewichteten Mittelwert der Entfernungen zu den fünf Bostoner Beschäftigungszentren. Die Verteilung der Daten lässt sich gut mit einer logarithmischen Normalverteilung beschreiben (siehe rote Line). Da die Werte auf der rechten Seite langsamer sinken als bei einer normalverteilung wird versucht die Kurve mittels einer logarithmischen Normalverteilung zu approximieren. Die Formel für die Logarithmische Normalverteilungist: $$ \frac{1}{\sigma x \sqrt{2\pi}}exp(-\frac{(ln(x)-\mu)^2}{2\sigma^2})  $$
+Die Transofmierte Zufallsvariable Y = ln(X) folgt ebenfalls einer Normalverteilung. (siehe qq norm dis)
+Die Werte dieser Funktion sind: $\mu$ =1.203 und $\sigma$ = 0.559
+
+</tr></td>
+<tr><td>
+<!-- Boston$rad -->
+<div style="padding: 20px">
+<div style="float:left; position:relative; width:50%">
+```{r echo=FALSE}
+  m <- mean(Boston$rad[Boston$rad <= 13])
+  s <-  sd(Boston$rad[Boston$rad <= 13])
+  plot(density(Boston$rad), col=3, main="Dichte von rad") #f verteilung
+  stripchart(Boston$rad,add=TRUE,pch=16,cex=.03,at=-0.00013,method="stack",col=8)
+  curve(dnorm(x,m,s)/2.3,add=TRUE,lwd=1, col="red", to = 13)
+  box() 
+```
+</div>
+<div style="margin-top: 5%">
+Der rad wert des Datensatzes Boston beschreibt die Zugänglichkeit zu radialen Autobahnen. Die Kurve auf der linken Seite lässt sich annähernd mit einer Normalverteilung beschreiben. Die Kurve auf der rechten Seite ist nur ein Wert und stellt somit keine Verteilung dar. Die Werte der Normalverteilung sind: $\mu$ = 4.449 und $\sigma$ = 1.633.
+</div>
+</div>
+</td></tr>
+<tr><td>
+<!-- Boston$tax -->
+<div style="padding: 20px">
+<div style="float:left; position:relative; width:50%">
+```{r echo=FALSE}
+  m <- mean(Boston$tax[Boston$tax <= 600])
+  s <-  sd(Boston$tax[Boston$tax <= 600])
+  plot(density(Boston$tax), col=3, main="Dichte von tax") #f verteilung
+  stripchart(Boston$tax,add=TRUE,pch=16,cex=.03,at=-0.00013,method="stack",col=8)
+  curve(dnorm(x,m,s)/1.8,add=TRUE,lwd=1, col="red", to = 600)
+  box() 
+```
+</div>
+<div style="margin-top: 5%">
+Der tax Wert des Datensatzes Boston beschreibt den Immobiliensteuersatz in voller Höhe pro 10.000 USD.  Die Kurve auf der linken Seite lässt sich annähernd mit einer Normalverteilung beschreiben. Die Kurve auf der rechten Seite ist nur ein Wert und stellt somit keine Verteilung dar. Die Werte der Normalverteilung sind: $\mu$ = 311.927 und $\sigma$ = 67.828.
+</div>
+</div>
+</td></tr>
+</table>
