@@ -11,6 +11,20 @@ library(MASS)
 data(Boston)
 ?Boston
 ```
+```{r}
+par(mfrow=c(2,2)) 
+qqnorm(Boston$crim, main="per capita crime rate by town")
+qqline(Boston$crim, col = "red", lwd = 2)
+
+qqnorm(Boston$zn, main="proportion of residential land zoned")
+qqline(Boston$zn, col = "red", lwd = 2)
+
+qqnorm(Boston$indus, main="proportion of non-retail business")
+qqline(Boston$indus, col = "red", lwd = 2)
+
+qqnorm(Boston$chas, main="Charles River dummy variable.")
+qqline(Boston$chas, col = "red", lwd = 2)
+```
 <!-- 
 Julia
 -->
