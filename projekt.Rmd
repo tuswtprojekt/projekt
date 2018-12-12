@@ -1,5 +1,5 @@
 ---
-title: "projekt"
+title: "SWUE projekt"
 output: html_document
 ---
 
