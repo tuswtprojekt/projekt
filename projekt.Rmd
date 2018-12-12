@@ -1,6 +1,8 @@
 ---
 title: "SWUE projekt"
 output: html_document
+header-includes:
+- \usepackage{mathbb}
 ---
 
 ```{r setup, include=FALSE}
