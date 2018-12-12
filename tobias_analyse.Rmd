@@ -1,0 +1,33 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+``` {r include = FALSE}
+library(MASS)
+data(Boston)
+```
+
+```{r include=FALSE}
+par(mfrow=c(3,2)) 
+
+plot(density(Boston$zn), col=3, main="Dichte von zn") # paretto
+stripchart(Boston$zn,add=TRUE,pch=16,cex=.03,at=-0.00013,method="stack",col=8)
+
+plot(density(Boston$indus), col=3, main="Dichte von indus") # links norm, rechts binom
+stripchart(Boston$indus,add=TRUE,pch=16,cex=.03,at=-0.00013,method="stack",col=8)
+
+plot(density(Boston$chas), col=3, main="Dichte von chas") # diskret
+stripchart(Boston$chas,add=TRUE,pch=16,cex=.03,at=-0.00013,method="stack",col=8)
+
+plot(density(Boston$nox), col=3, main="Dichte von nox") # chi^2 oder F
+stripchart(Boston$nox,add=TRUE,pch=16,cex=.03,at=-0.00013,method="stack",col=8)
+```
+
+<div style="padding: 20px">
+<div style="float:left; position:relative; width:50%">
+```{r pressure, echo=FALSE}
+  plot(density(Boston$crim), col=3, main="Dichte von crim") # paretto
+  stripchart(Boston$crim,add=TRUE,pch=16,cex=.03,at=-0.00013,method="stack",col=8)
+```
+</div>
+Test
+</div>
