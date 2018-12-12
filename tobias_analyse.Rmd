@@ -1,33 +1,94 @@
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+<table>
+<tr><td>
+<div style="padding: 20px">
+<div style="float:left; position:relative; width:50%">
+```{r, echo=FALSE}
+  x <- seq(0, max(Boston$crim), 0.01)
+  n <- length(Boston$crim)
+  xi <- min(Boston$crim)
+  l <- n / (sum (sapply(Boston$crim, function(x) log(x/xi))))
+  hist(Boston$crim, main="Dichte von crim", freq = FALSE, nclass = 1000) # paretto
+  y <- sapply(x, function(n) dpareto(n,xi,l))
+  lines(x, y, col="red")
 ```
-``` {r include = FALSE}
-library(MASS)
-data(Boston)
+</div>
+Crim beschreibt die Verbrechensrate pro Einwohner einer Stadt. Die Größe lässt sich gut mit einer Pareto-Verteilung beschreiben. Die Parameter errechnen sich wie folgt:
+$$ \hat \xi = min_{1 \leq i \leq n} \, x_i = 0.00632$$
+$$ \hat \lambda = \frac{n}{\sum_{i=1}^n log \Big ( \frac{x_i}{\hat \xi}\Big)} =  0.00645905 $$
+</div>
+</td></tr>
+<tr><td>
+<!--```{r, echo=FALSE}
+  x <- seq(0, max(Boston$zn), 0.01)
+  n <- length(Boston$zn)
+  xi <- 1
+  l <- n / (sum (sapply(Boston$zn, function(x) log(x + 1/xi))))
+  hist(Boston$zn, main="Dichte von zn", freq = FALSE, nclass = 1000) # paretto
+  y <- sapply(x, function(n) dpar(n + 1,xi,l))
 ```
-
-```{r include=FALSE}
-par(mfrow=c(3,2)) 
-
-plot(density(Boston$zn), col=3, main="Dichte von zn") # paretto
-stripchart(Boston$zn,add=TRUE,pch=16,cex=.03,at=-0.00013,method="stack",col=8)
-
-plot(density(Boston$indus), col=3, main="Dichte von indus") # links norm, rechts binom
-stripchart(Boston$indus,add=TRUE,pch=16,cex=.03,at=-0.00013,method="stack",col=8)
-
-plot(density(Boston$chas), col=3, main="Dichte von chas") # diskret
-stripchart(Boston$chas,add=TRUE,pch=16,cex=.03,at=-0.00013,method="stack",col=8)
-
-plot(density(Boston$nox), col=3, main="Dichte von nox") # chi^2 oder F
-stripchart(Boston$nox,add=TRUE,pch=16,cex=.03,at=-0.00013,method="stack",col=8)
+Auch diese Größe lässt sich gut mit einer Pareto-Verteilung beschreiben. Dieser Datensatz enthält aber einige Werte mit dem Wert 0. Für $\xi = 0$ ist die normale Pareto-Verteilung jedoch nicht definiert. Die Parameter errechnen sich wie folgt:
+$$ \hat \xi = 1$$
+$$ \hat \lambda = \frac{n}{\sum_{i=1}^n log \Big ( \frac{x_i}{\hat \xi}\Big)} =  $$
+-->
+<div style="padding: 20px">
+<div style="float:left; position:relative; width:50%">
+```{r, echo=FALSE}
+  hist(Boston$zn, main="Dichte von zn", freq = FALSE, nclass = 50)
 ```
+</div>
+Zn beschreibt den Anteil der Wohngrundstücke für Grundstücke mit mehr als 25.000 sq.ft. Es gibt viele 0-Werte (ca. 73%). Die restlichen Werte scheinen keiner konkreten Verteilung zu folgen. Am ehesten würden sich 2 weitere skalierte (Da diese maximal ~0.27 als Summe haben dürften) Binomialverteilungen mit den Mittelpunkten 20 und 80 eigenen, da es hier kleinere Spitzen in der Frequenz gibt. Darüber hinaus könnte es auch eine Gleichverteilung im Intervall $[12.5; 100]$ sein.
+</div>
+</td></tr>
+<tr><td>
 
 <div style="padding: 20px">
 <div style="float:left; position:relative; width:50%">
-```{r pressure, echo=FALSE}
-  plot(density(Boston$crim), col=3, main="Dichte von crim") # paretto
-  stripchart(Boston$crim,add=TRUE,pch=16,cex=.03,at=-0.00013,method="stack",col=8)
+```{r, echo=FALSE}
+  hist(Boston$indus, main="Dichte von indus", freq = FALSE, nclass = 50)
 ```
 </div>
-Test
+Indus beschreibt den Anteil der Industriefläche pro Stadt. Wenn man sich das Datenset ansieht, kann man erkennen, dass Werte öfters vorkommen (zb. 18.10 kommt 132 Mal vor). Daher nehmen wir an, dass mehrere Vororte zu einem Industriegebiet zusammengefasst wurden. Für jeden Ort, der Teil eines Industriegebietes ist, wurde der Wert des gesamten Industriegebietes verwendet.
 </div>
+</td></tr>
+<tr><td>
+
+<div style="padding: 20px">
+<div style="float:left; position:relative; width:50%">
+Der Anteil der Städte aus der Stichprobe, welche am Charles River liegen.
+```{r, echo=FALSE, result='hold'}
+print(length(Boston$chas[Boston$chas == 1]) / length(Boston$chas))
+```
+Der Anteil der Städte aus der Stichprobe, welche nicht am Charles River liegen.
+```{r, echo=FALSE, result='hold'}
+print(length(Boston$chas[Boston$chas == 0]) / length(Boston$chas))
+```
+</div>
+Chas gibt ab, ob der Vorort an den Charles River angrenzt. Hierbei handelt es sich um eine Bernoulli Verteilung. Die Wahrscheinlichkeit, dass das Bernoulli Experiment erfolgreich ist, lässt sich wie folgt berechnen: 
+$$ \hat p = \frac{\hat p_t}{n} = 0.06916996$$
+Wobei $\hat p_t$ die Anzahl der erfolgreichen Experimente in der Stichprobe ist.
+</div>
+</td></tr>
+<tr><td>
+
+<div style="padding: 20px">
+<div style="float:left; position:relative; width:50%">
+```{r, echo=FALSE}
+q1 = quantile(Boston$nox,0.1);
+q9 = quantile(Boston$nox,0.9);
+mlog <- (log(q1) + log(q9)) / 2
+percentile <- 0.1
+slog <- (log(q1) - mlog) / qnorm(percentile)
+plot(density(Boston$nox), col=3, main="Dichte von nox")
+curve(dlnorm(x, meanlog = mlog, sdlog = slog, log = FALSE),add=TRUE,lwd=1, col="red")
+box()
+```
+```{r, echo=FALSE}
+qqnorm(sapply(Boston$nox, function(x) log(x)))
+qqline(sapply(Boston$nox, function(x) log(x)), col="red")
+```
+</div>
+Nox gibt die Konzentration von Stickstoff-Oxiden an. Die Größe scheint nicht ganz normalverteilt zu sein, da die Dichtefunktion (siehe Plot links) nicht symmetrisch scheint - sie steigt stärker an, als sie abfällt. Daher wird versucht, die Größe mit einer logarithmischen Normalverteilung zu beschreiben. Die transformierte Zufallsvariable $Y = log(X)$ ist annähernd normalverteilt (siehe QQPlot). Jedoch ist das Ergebnis nur marginal besser, als durch eine normale Normalverteilung.
+Um die Zufallsvariabel $Y$ analysieren zu können, wurde für jedes Element $x_i$ aus der Stichprobe $y_i = log(x_1)$ gesetzt. Der so gewonnene Datensatz repräsentiert nun eine Stichprobe der Zufallsvariable $Y$. 
+</div>
+</td></tr>
+</table>
