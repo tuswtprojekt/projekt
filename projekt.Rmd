@@ -1,5 +1,6 @@
 ---
 title: "SWUE projekt"
+author: "Tobias, Markus, Julia"
 output: html_document
 ---
 
