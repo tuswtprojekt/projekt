@@ -1,6 +1,6 @@
 ---
-title: "SWUE projekt"
-author: "Tobias, Markus, Julia"
+title: "SWUE Projekt - Aufgabe 7"
+author: "Tobias, Julia, Markus"
 output: html_document
 header-includes:
 - \usepackage{mathbb}
@@ -10,6 +10,7 @@ header-includes:
 knitr::opts_chunk$set(echo = TRUE)
 library(MASS)
 data(Boston)
+library(VGAM)
 ```
 
 ```{r child = 'julia_analyse.Rmd'}

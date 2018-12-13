@@ -1,0 +1,93 @@
+```{r echo=FALSE}
+par(mfrow=c(2,2)) 
+hist(Boston$ptratio) # normal, eher F gespiegelt
+qqnorm(Boston$ptratio)
+qqline(Boston$ptratio)
+
+hist(Boston$black) # paretto
+qqnorm(Boston$black)
+qqline(Boston$black)
+
+hist(Boston$lstat) # eher normal als ptratio
+qqnorm(Boston$lstat)
+qqline(Boston$lstat)
+
+hist(Boston$medv) # normal wenn man rechte Ausreißer wegnimmt
+qqnorm(Boston$medv)
+qqline(Boston$medv)
+```
+
+<div style="padding: 20px">
+<div style="float:left; position:relative; width:50%">
+```{r, echo=FALSE}
+  plot(density(Boston$ptratio), lwd=3, main="Dichte von ptratio")
+  mittelwert <- mean(Boston$ptratio)
+  streuung <- sd(Boston$ptratio)
+  lines(density(rnorm(length(Boston$ptratio), mittelwert, streuung)), col=4)
+```
+</div>
+ptratio: <br>
+Schüler-Lehrer-Verhältnis nach Stadt.<br>
+<br>
+Anfangs angenommen es ist eine Normalverteilung, aber aufgrund der blauen Linie sieht man, dass das nicht so ist. <br>
+blaue Linie=rnorm density <br>
+<!-- **<span class="math">$$\sin^2(x) + \cos^2(x) = 1$$</span>** -->
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+<div style="padding: 20px">
+<div style="float:left; position:relative; width:50%">
+```{r, echo=FALSE}
+  hist(Boston$black, freq=FALSE, main="Dichte und Histogramm von black")
+  lines(density(Boston$black), lwd=2)
+  mittelwert <- mean(Boston$black)
+  streuung <- sd(Boston$black)
+  
+  lines(dpareto(410:0, 11, 0.7), col=3)
+```
+</div>
+black: <br>
+1000 (Bk - 0,63) ^ 2 wobei Bk der Schwarzanteil der Stadt ist.<br>
+<br>
+Annäherung an Paetro-Verteilung mit Intervall $[0, \infty]$
+Die Paetro-Verteilung hat hier die meisten Vorkommen bei den höheren Werten
+<br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+
+<div style="padding: 20px">
+<div style="float:left; position:relative; width:50%">
+```{r, echo=FALSE}
+  plot(density(Boston$lstat), lwd=3, main="Dichte von lstat")
+  mittelwert <- mean(Boston$lstat)
+  streuung <- sd(Boston$lstat)
+  lines(density(rnorm(length(Boston$lstat), mittelwert, streuung)), col=4)
+  x<-Boston$lstat
+  curve(dnorm(x, mittelwert, streuung), add=TRUE, col=2)
+```
+</div>
+lstat: <br>
+niedrigerer Status der Bevölkerung (Prozent). <br>
+<br>
+Annahme: ptratio ist normalverteilt <br>
+die blaue und rote Linie zeigen, dass die Annahme stimmt <br>
+blaue Linie=rnorm density <br>
+Mittelwert: 12.65306
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+<div style="padding: 20px">
+<div style="float:left; position:relative; width:50%">
+```{r, echo=FALSE}
+  hist(Boston$medv, freq=FALSE)
+  lines(density(Boston$medv), lwd=3, main="Dichte und Histogramm von medv")
+  mittelwert <- mean(Boston$medv)
+  streuung <- sd(Boston$medv)
+```
+</div>
+medv: <br>
+mittlerer Wert von Wohneigentum in $ 1000. <br>
+
+<br>
+</div>
