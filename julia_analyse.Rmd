@@ -1,7 +1,7 @@
 ---
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 ```{r, include=FALSE}
 library(MASS)
@@ -71,6 +71,9 @@ Berechnung des Paramters $\hat \xi$:
   lines(density(rnorm(length(Boston$lstat), mittelwert, streuung)), col=4)
   x<-Boston$lstat
   curve(dnorm(x, mittelwert, streuung), add=TRUE, col=2)
+  
+  zalpha <- qnorm(0.05, lower.tail = FALSE)
+  z <- ((mittelwert - 11)/(streuung/sqrt(length(Boston$lstat))))
 ```
 ```{r, echo=FALSE}
   qqnorm(Boston$lstat)
@@ -88,6 +91,15 @@ Parameter $\mu$ und $\sigma$:
   sd(Boston$lstat)
 ```
 <br><br><br><br><br><br><br><br><br><br>
+<div>Hypothesen:<br>
+Der Erwartungswert der Verteilung wird mit 11% angenommen, durch die aktuelle Flüchtlingskrise, wird eine Vergrößerung des Prozentanteils der BevÃ¶lkerung mit niedriger Position in der sozialen Hierarchie erwartet.
+Um die Erwartung zu bestätigen oder wiederlegen wird ein rechtsseitiger Test durchgeführt: <br>
+$H_0 : \mu = 11$, $H_1 : \mu \gt 11$ <br>
+$Z_\alpha = `r zalpha`$, $Z= `r z`$ <br>
+Z liegt in der rejection region $[`r zalpha`, + \infty]$, daher wird die Nullhypothese verworfen.
+
+</div>
+<br>
 </div>
 
 
