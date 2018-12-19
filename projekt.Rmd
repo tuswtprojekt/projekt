@@ -11,6 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(MASS)
 data(Boston)
 library(VGAM)
+library(moments)
 ```
 
 ```{r child = 'julia_analyse.Rmd'}

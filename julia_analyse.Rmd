@@ -1,57 +1,53 @@
-```{r echo=FALSE}
-par(mfrow=c(2,2)) 
-hist(Boston$ptratio) # normal, eher F gespiegelt
-qqnorm(Boston$ptratio)
-qqline(Boston$ptratio)
-
-hist(Boston$black) # paretto
-qqnorm(Boston$black)
-qqline(Boston$black)
-
-hist(Boston$lstat) # eher normal als ptratio
-qqnorm(Boston$lstat)
-qqline(Boston$lstat)
-
-hist(Boston$medv) # normal wenn man rechte Ausreißer wegnimmt
-qqnorm(Boston$medv)
-qqline(Boston$medv)
-```
-
 <div style="padding: 20px">
 <div style="float:left; position:relative; width:50%">
 ```{r, echo=FALSE}
-  plot(density(Boston$ptratio), lwd=3, main="Dichte von ptratio")
+  plot(density(Boston$ptratio), lwd=3, main="Dichte von ptratio") #vl F verteilung gespiegelt
   mittelwert <- mean(Boston$ptratio)
   streuung <- sd(Boston$ptratio)
+  x <- Boston$ptratio
   lines(density(rnorm(length(Boston$ptratio), mittelwert, streuung)), col=4)
+  curve(dnorm(x,mittelwert,streuung),add=TRUE,lwd=1, col="red")
 ```
 </div>
 ptratio: <br>
 Schüler-Lehrer-Verhältnis nach Stadt.<br>
+Durch die density Funktion (schwarze Linie) kann man sehen und durch die Schiefe kann man berechnen, dass die Verteilungsform eher linksschief ist (Schiefe < 0)
+Anfangs angenommen es ist normalverteilt, aber man sieht, dass das nicht so ist. <br>
+blaue Linie = rnorm density; rote Linie = dnorm <br>
+Die Verteilung hat 2 Peaks: bei 14 bis 15 und 19 bis 20.5. <br>
+5 (bzw. 6) Zahlen Zusammenfassung: <br>
+```{r}
+  summary(Boston$ptratio)
+```
 <br>
-Anfangs angenommen es ist eine Normalverteilung, aber aufgrund der blauen Linie sieht man, dass das nicht so ist. <br>
-blaue Linie=rnorm density <br>
-<!-- **<span class="math">$$\sin^2(x) + \cos^2(x) = 1$$</span>** -->
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
+
 
 <div style="padding: 20px">
 <div style="float:left; position:relative; width:50%">
 ```{r, echo=FALSE}
   hist(Boston$black, freq=FALSE, main="Dichte und Histogramm von black")
   lines(density(Boston$black), lwd=2)
-  mittelwert <- mean(Boston$black)
-  streuung <- sd(Boston$black)
-  
-  lines(dpareto(410:0, 11, 0.7), col=3)
+  x <- seq(max(Boston$black), 0)
+  n <- length(Boston$black)
+  xi <- min(Boston$black)
+  l <- n / (sum (sapply(Boston$black, function(x) log(x/xi))))
+  lines(dpareto(max(Boston$black):0, xi, l), col=3)
 ```
 </div>
 black: <br>
 1000 (Bk - 0,63) ^ 2 wobei Bk der Schwarzanteil der Stadt ist.<br>
-<br>
+Verteilung ist linksschief (Schiefe kleiner 0) und J-förmig. 
+```{r}
+  skewness(Boston$black)
+```
 Annäherung an Paetro-Verteilung mit Intervall $[0, \infty]$
-Die Paetro-Verteilung hat hier die meisten Vorkommen bei den höheren Werten
-<br><br><br><br><br><br><br><br><br><br><br><br>
+Die Paetro-Verteilung (grüne Linie) hat hier die meisten Vorkommen bei den höheren Werten <br>
+Berechnung des Paramters $\hat \xi$:
+```{r}
+  min(Boston$black)
+```
+<br>
 </div>
 
 
@@ -65,17 +61,24 @@ Die Paetro-Verteilung hat hier die meisten Vorkommen bei den höheren Werten
   x<-Boston$lstat
   curve(dnorm(x, mittelwert, streuung), add=TRUE, col=2)
 ```
+```{r, echo=FALSE}
+  qqnorm(Boston$lstat)
+  qqline(Boston$lstat)
+```
 </div>
 lstat: <br>
-niedrigerer Status der Bevölkerung (Prozent). <br>
-<br>
+Prozentanteil der Bevölkerung mit niedriger Position in der sozialen Hierarchie. Dh. schlechte menschliche Lebensumstände (z.B.: wenig Bildung, keinen Schulabschluss, keine Ausbildung oder Studium, geringes Einkommen, Migrationshintergrund, ...)<br>
 Annahme: ptratio ist normalverteilt <br>
 die blaue und rote Linie zeigen, dass die Annahme stimmt <br>
 blaue Linie=rnorm density <br>
-Mittelwert: 12.65306
-
-<br><br><br><br><br><br><br><br><br><br><br><br>
+Parameter $\mu$ und $\sigma$:
+```{r}
+  mean(Boston$lstat)
+  sd(Boston$lstat)
+```
+<br><br><br><br><br><br><br><br><br><br>
 </div>
+
 
 <div style="padding: 20px">
 <div style="float:left; position:relative; width:50%">
@@ -84,10 +87,22 @@ Mittelwert: 12.65306
   lines(density(Boston$medv), lwd=3, main="Dichte und Histogramm von medv")
   mittelwert <- mean(Boston$medv)
   streuung <- sd(Boston$medv)
+  x<-Boston$medv
+  curve(dnorm(x,mittelwert,streuung),add=TRUE,lwd=1, col="red")
+  
+  x <- Boston$medv[Boston$medv < 50]
+  m <- mean(x)
+  s <-  sd(x)
+  curve(dnorm(x,m,s),add=TRUE,lwd=1, col="blue", to = 40)
 ```
 </div>
 medv: <br>
 mittlerer Wert von Wohneigentum in $ 1000. <br>
-
+Annäherung an Normalverteilung, aber rechtsschief (Schiefe > 0) und leptokurtisch (steilgipfelig) (Kurtosis > 3). <br>
+```{r}
+  skewness(Boston$medv)
+  kurtosis(Boston$medv)
+```
+rote Linie = Normalverteilung, blaue Linie = Normalverteilung von medv Werten < 50 (Ausreißer größer/gleich 50 weggeschnitten)
 <br>
 </div>
