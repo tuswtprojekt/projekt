@@ -90,7 +90,7 @@ box()
 ```{r, echo=FALSE}
 qqnorm(sapply(Boston$nox, function(x) log(x)))
 qqline(sapply(Boston$nox, function(x) log(x)), col="red")
-n <- length(Bosten$nox)
+n <- length(Boston$nox)
 ```
 </div>
 Nox gibt die Konzentration von Stickstoff-Oxiden an. Die Größe scheint nicht ganz normalverteilt zu sein, da die Dichtefunktion (siehe Plot links) nicht symmetrisch scheint - sie steigt stärker an, als sie abfällt. Daher wird versucht, die Größe mit einer logarithmischen Normalverteilung zu beschreiben. Die transformierte Zufallsvariable $Y = log(X)$ ist annähernd normalverteilt (siehe QQPlot). Jedoch ist das Ergebnis nur marginal besser, als durch eine normale Normalverteilung.
@@ -100,6 +100,7 @@ Um die Zufallsvariabel $Y$ analysieren zu können, wurde für jedes Element $x_i
 <tr><td>
 
 #####Hypothesen:
+$T = \frac{1}{\sigma_0^2} \sum$
 $H_0$: $\sigma^2$ = $0.4^2$
 $H_1$: $\sigma^2$ < $0.4^2$
 n = $`r n`$  
