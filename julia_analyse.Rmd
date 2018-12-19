@@ -9,6 +9,8 @@ data(Boston)
 library(VGAM)
 library(moments)
 ```
+<table>
+<tr><td>
 <div style="padding: 20px">
 <div style="float:left; position:relative; width:50%">
 ```{r, echo=FALSE}
@@ -20,7 +22,8 @@ library(moments)
   curve(dnorm(x,mittelwert,streuung),add=TRUE,lwd=1, col="red")
 ```
 </div>
-ptratio: <br>
+####ptratio:
+<br>
 Schüler-Lehrer-Verhältnis nach Stadt.<br>
 Durch die density Funktion (schwarze Linie) kann man sehen und durch die Schiefe kann man berechnen, dass die Verteilungsform eher linksschief ist (Schiefe < 0)
 Anfangs angenommen es ist normalverteilt, aber man sieht, dass das nicht so ist. <br>
@@ -32,8 +35,10 @@ Die Verteilung hat 2 Peaks: bei 14 bis 15 und 19 bis 20.5. <br>
 ```
 <br>
 </div>
+</div>
+</td></tr>
 
-
+<tr><td>
 <div style="padding: 20px">
 <div style="float:left; position:relative; width:50%">
 ```{r, echo=FALSE}
@@ -46,7 +51,8 @@ Die Verteilung hat 2 Peaks: bei 14 bis 15 und 19 bis 20.5. <br>
   lines(dpareto(max(Boston$black):0, xi, l), col=3)
 ```
 </div>
-black: <br>
+####black:
+<br>
 1000 (Bk - 0,63) ^ 2 wobei Bk der Schwarzanteil der Stadt ist.<br>
 Verteilung ist linksschief (Schiefe kleiner 0) und J-förmig. 
 ```{r}
@@ -60,8 +66,10 @@ Berechnung des Paramters $\hat \xi$:
 ```
 <br>
 </div>
+</div>
+</tr></td>
 
-
+<tr><td>
 <div style="padding: 20px">
 <div style="float:left; position:relative; width:50%">
 ```{r, echo=FALSE}
@@ -80,7 +88,8 @@ Berechnung des Paramters $\hat \xi$:
   qqline(Boston$lstat)
 ```
 </div>
-lstat: <br>
+####lstat:
+<br>
 Prozentanteil der Bevölkerung mit niedriger Position in der sozialen Hierarchie. Dh. schlechte menschliche Lebensumstände (z.B.: wenig Bildung, keinen Schulabschluss, keine Ausbildung oder Studium, geringes Einkommen, Migrationshintergrund, ...)<br>
 Annahme: ptratio ist normalverteilt <br>
 die blaue und rote Linie zeigen, dass die Annahme stimmt <br>
@@ -90,19 +99,22 @@ Parameter $\mu$ und $\sigma$:
   mean(Boston$lstat)
   sd(Boston$lstat)
 ```
-<br><br><br><br><br><br><br><br><br><br>
-<div>Hypothesen:<br>
+<br><br><br><br><br>
+</div>
+</div>
+</td></tr>
+
+<tr><td>
+#####Hypothesen:
+<br>
 Der Erwartungswert der Verteilung wird mit 11% angenommen, durch die aktuelle Fl�chtlingskrise, wird eine Vergr��erung des Prozentanteils der Bevölkerung mit niedriger Position in der sozialen Hierarchie erwartet.
 Um die Erwartung zu best�tigen oder wiederlegen wird ein rechtsseitiger Test durchgef�hrt: <br>
 $H_0 : \mu = 11$, $H_1 : \mu \gt 11$ <br>
 $Z_\alpha = `r zalpha`$, $Z= `r z`$ <br>
 Z liegt in der rejection region $[`r zalpha`, + \infty]$, daher wird die Nullhypothese verworfen.
+</td></tr>
 
-</div>
-<br>
-</div>
-
-
+<tr><td>
 <div style="padding: 20px">
 <div style="float:left; position:relative; width:50%">
 ```{r, echo=FALSE}
@@ -118,9 +130,8 @@ Z liegt in der rejection region $[`r zalpha`, + \infty]$, daher wird die Nullhyp
   s <-  sd(x)
   curve(dnorm(x,m,s),add=TRUE,lwd=1, col="blue", to = 40)
 ```
-<br>
 </div>
-#### medv
+####medv
 <br>
 mittlerer Wert von Wohneigentum in $ 1000. <br>
 Annäherung an Normalverteilung, aber rechtsschief (Schiefe > 0) und leptokurtisch (steilgipfelig) (Kurtosis > 3). <br>
@@ -130,7 +141,10 @@ Annäherung an Normalverteilung, aber rechtsschief (Schiefe > 0) und leptokurtis
 ```
 rote Linie = Normalverteilung, blaue Linie = Normalverteilung von medv Werten < 50 (Ausreißer größer/gleich 50 weggeschnitten)
 <br>
-<div>
+</div>
+</div>
+</td></tr>
+<tr><td>
 #####Hypothesen:  
 Annahme: Das Bevölkerungswachstun in Bosten wird in den nächsten Jahren weniger stark wachsen als in den Jahren zuvor und daher wird der angenommen, dass der mittlere Wert des Whohnungseigentums sinkt und deshhalb wird $\mu$ mit 21 angenommen.  
 n = $`r length(x)` \geq$ 30; Daher kann die Z-Statistik verwendet werden.  
@@ -155,6 +169,5 @@ lower <- z*(s/sqrt(length(x)))+mu
 higher <- -z*(s/sqrt(length(x)))+mu
 ```
 Der kritische Bereich für $alpha = 0.05$ ist: $`r lower` \leq \overline{x} \leq `r higher`$. Das bedeutet, dass $H_0$ gültig ist, solange der wahre Mittelwert in diesem Bereich liegt. 
-</div>
-<br>
-</div>
+</td></tr>
+</table>
