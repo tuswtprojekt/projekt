@@ -1,3 +1,14 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+```{r, include=FALSE}
+library(MASS)
+data(Boston)
+library(VGAM)
+library(moments)
+```
 <div style="padding: 20px">
 <div style="float:left; position:relative; width:50%">
 ```{r, echo=FALSE}
@@ -10,7 +21,7 @@
 ```
 </div>
 ptratio: <br>
-Schüler-Lehrer-Verhältnis nach Stadt.<br>
+SchÃ¼ler-Lehrer-VerhÃ¤ltnis nach Stadt.<br>
 Durch die density Funktion (schwarze Linie) kann man sehen und durch die Schiefe kann man berechnen, dass die Verteilungsform eher linksschief ist (Schiefe < 0)
 Anfangs angenommen es ist normalverteilt, aber man sieht, dass das nicht so ist. <br>
 blaue Linie = rnorm density; rote Linie = dnorm <br>
@@ -37,12 +48,12 @@ Die Verteilung hat 2 Peaks: bei 14 bis 15 und 19 bis 20.5. <br>
 </div>
 black: <br>
 1000 (Bk - 0,63) ^ 2 wobei Bk der Schwarzanteil der Stadt ist.<br>
-Verteilung ist linksschief (Schiefe kleiner 0) und J-förmig. 
+Verteilung ist linksschief (Schiefe kleiner 0) und J-fÃ¶rmig. 
 ```{r}
   skewness(Boston$black)
 ```
-Annäherung an Paetro-Verteilung mit Intervall $[0, \infty]$
-Die Paetro-Verteilung (grüne Linie) hat hier die meisten Vorkommen bei den höheren Werten <br>
+AnnÃ¤herung an Paetro-Verteilung mit Intervall $[0, \infty]$
+Die Paetro-Verteilung (grÃ¼ne Linie) hat hier die meisten Vorkommen bei den hÃ¶heren Werten <br>
 Berechnung des Paramters $\hat \xi$:
 ```{r}
   min(Boston$black)
@@ -67,7 +78,7 @@ Berechnung des Paramters $\hat \xi$:
 ```
 </div>
 lstat: <br>
-Prozentanteil der Bevölkerung mit niedriger Position in der sozialen Hierarchie. Dh. schlechte menschliche Lebensumstände (z.B.: wenig Bildung, keinen Schulabschluss, keine Ausbildung oder Studium, geringes Einkommen, Migrationshintergrund, ...)<br>
+Prozentanteil der BevÃ¶lkerung mit niedriger Position in der sozialen Hierarchie. Dh. schlechte menschliche LebensumstÃ¤nde (z.B.: wenig Bildung, keinen Schulabschluss, keine Ausbildung oder Studium, geringes Einkommen, Migrationshintergrund, ...)<br>
 Annahme: ptratio ist normalverteilt <br>
 die blaue und rote Linie zeigen, dass die Annahme stimmt <br>
 blaue Linie=rnorm density <br>
@@ -98,11 +109,11 @@ Parameter $\mu$ und $\sigma$:
 </div>
 medv: <br>
 mittlerer Wert von Wohneigentum in $ 1000. <br>
-Annäherung an Normalverteilung, aber rechtsschief (Schiefe > 0) und leptokurtisch (steilgipfelig) (Kurtosis > 3). <br>
+AnnÃ¤herung an Normalverteilung, aber rechtsschief (Schiefe > 0) und leptokurtisch (steilgipfelig) (Kurtosis > 3). <br>
 ```{r}
   skewness(Boston$medv)
   kurtosis(Boston$medv)
 ```
-rote Linie = Normalverteilung, blaue Linie = Normalverteilung von medv Werten < 50 (Ausreißer größer/gleich 50 weggeschnitten)
+rote Linie = Normalverteilung, blaue Linie = Normalverteilung von medv Werten < 50 (AusreiÃŸer grÃ¶ÃŸer/gleich 50 weggeschnitten)
 <br>
 </div>
