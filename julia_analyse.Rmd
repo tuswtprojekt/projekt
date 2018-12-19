@@ -116,4 +116,6 @@ Annäherung an Normalverteilung, aber rechtsschief (Schiefe > 0) und leptokurtis
 ```
 rote Linie = Normalverteilung, blaue Linie = Normalverteilung von medv Werten < 50 (Ausreißer größer/gleich 50 weggeschnitten)
 <br>
+<div>Hypothesen:</div>
+<br>
 </div>
