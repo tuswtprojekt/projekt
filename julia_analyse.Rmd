@@ -94,7 +94,7 @@ Prozentanteil der BevÃ¶lkerung mit niedriger Position in der sozialen Hierarchie
 Annahme: ptratio ist normalverteilt <br>
 die blaue und rote Linie zeigen, dass die Annahme stimmt <br>
 blaue Linie=rnorm density <br>
-Parameter $\mu$ und $\sigma$:
+Parameter $\mu$ und $\sigma$:  
 ```{r}
   mean(Boston$lstat)
   sd(Boston$lstat)
@@ -107,8 +107,8 @@ Parameter $\mu$ und $\sigma$:
 <tr><td>
 #####Hypothesen:
 <br>
-Der Erwartungswert der Verteilung wird mit 11% angenommen, durch die aktuelle Flüchtlingskrise, wird eine Vergrößerung des Prozentanteils der BevÃ¶lkerung mit niedriger Position in der sozialen Hierarchie erwartet.
-Um die Erwartung zu bestätigen oder wiederlegen wird ein rechtsseitiger Test durchgeführt: <br>
+Der Erwartungswert der Verteilung wird mit 11% angenommen, durch die aktuelle Fl?chtlingskrise, wird eine Vergr??erung des Prozentanteils der BevÃ¶lkerung mit niedriger Position in der sozialen Hierarchie erwartet.
+Um die Erwartung zu best?tigen oder wiederlegen wird ein rechtsseitiger Test durchgef?hrt: <br>
 $H_0 : \mu = 11$, $H_1 : \mu \gt 11$ <br>
 $Z_\alpha = `r zalpha`$, $Z= `r z`$ <br>
 Z liegt in der rejection region $[`r zalpha`, + \infty]$, daher wird die Nullhypothese verworfen.
