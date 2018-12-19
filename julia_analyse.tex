@@ -1,0 +1,291 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{}
+    \pretitle{\vspace{\droptitle}}
+  \posttitle{}
+    \author{}
+    \preauthor{}\postauthor{}
+    \date{}
+    \predate{}\postdate{}
+  
+
+\begin{document}
+
+\includegraphics{julia_analyse_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+ptratio: Schüler-Lehrer-Verhältnis nach Stadt. Durch die density
+Funktion (schwarze Linie) kann man sehen und durch die Schiefe kann man
+berechnen, dass die Verteilungsform eher linksschief ist (Schiefe
+\textless{} 0) Anfangs angenommen es ist normalverteilt, aber man sieht,
+dass das nicht so ist. blaue Linie = rnorm density; rote Linie = dnorm
+Die Verteilung hat 2 Peaks: bei 14 bis 15 und 19 bis 20.5. 5 (bzw. 6)
+Zahlen Zusammenfassung:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \KeywordTok{summary}\NormalTok{(Boston}\OperatorTok{$}\NormalTok{ptratio)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   12.60   17.40   19.05   18.46   20.20   22.00
+\end{verbatim}
+
+\includegraphics{julia_analyse_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+black: 1000 (Bk - 0,63) \^{} 2 wobei Bk der Schwarzanteil der Stadt ist.
+Verteilung ist linksschief (Schiefe kleiner 0) und J-förmig.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \KeywordTok{skewness}\NormalTok{(Boston}\OperatorTok{$}\NormalTok{black)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -2.881798
+\end{verbatim}
+
+Annäherung an Paetro-Verteilung mit Intervall \([0, \infty]\) Die
+Paetro-Verteilung (grüne Linie) hat hier die meisten Vorkommen bei den
+höheren Werten Berechnung des Paramters \(\hat \xi\):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \KeywordTok{min}\NormalTok{(Boston}\OperatorTok{$}\NormalTok{black)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.32
+\end{verbatim}
+
+\includegraphics{julia_analyse_files/figure-latex/unnamed-chunk-7-1.pdf}
+\includegraphics{julia_analyse_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+lstat: Prozentanteil der Bevölkerung mit niedriger Position in der
+sozialen Hierarchie. Dh. schlechte menschliche Lebensumstände (z.B.:
+wenig Bildung, keinen Schulabschluss, keine Ausbildung oder Studium,
+geringes Einkommen, Migrationshintergrund, \ldots{}) Annahme: ptratio
+ist normalverteilt die blaue und rote Linie zeigen, dass die Annahme
+stimmt blaue Linie=rnorm density Parameter \(\mu\) und \(\sigma\):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \KeywordTok{mean}\NormalTok{(Boston}\OperatorTok{$}\NormalTok{lstat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 12.65306
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \KeywordTok{sd}\NormalTok{(Boston}\OperatorTok{$}\NormalTok{lstat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7.141062
+\end{verbatim}
+
+\includegraphics{julia_analyse_files/figure-latex/unnamed-chunk-10-1.pdf}
+\#\#\#\# medv
+
+ mittlerer Wert von Wohneigentum in \$ 1000. Annäherung an
+Normalverteilung, aber rechtsschief (Schiefe \textgreater{} 0) und
+leptokurtisch (steilgipfelig) (Kurtosis \textgreater{} 3).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \KeywordTok{skewness}\NormalTok{(Boston}\OperatorTok{$}\NormalTok{medv)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.104811
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \KeywordTok{kurtosis}\NormalTok{(Boston}\OperatorTok{$}\NormalTok{medv)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.468629
+\end{verbatim}
+
+rote Linie = Normalverteilung, blaue Linie = Normalverteilung von medv
+Werten \textless{} 50 (Ausreißer größer/gleich 50 weggeschnitten)
+
+\subparagraph{Hypothesen:}\label{hypothesen}
+
+Annahme: Das Bevölkerungswachstun in Bosten wird in den nächsten Jahren
+weniger stark wachsen als in den Jahren zuvor und daher wird der
+angenommen, dass der mittlere Wert des Whohnungseigentums sinkt und
+deshhalb wird \(\mu\) mit 21 angenommen.\\
+n = \(490 \geq\) 30; Daher kann die Z-Statistik verwendet werden.\\
+\(\alpha = 5\)\%\\
+\(\overline{x} = 21.6359184\)\\
+\(s = 7.8653011\)\\
+\(H_0: \mu = 21\)\\
+\(H_1: \mu \gt 21\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mu <-}\StringTok{ }\DecValTok{21}
+\NormalTok{z <-}\StringTok{ }\NormalTok{(m}\OperatorTok{-}\NormalTok{mu)}\OperatorTok{/}\NormalTok{(s}\OperatorTok{/}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{length}\NormalTok{(x)))}
+\NormalTok{p <-}\StringTok{ }\KeywordTok{pnorm}\NormalTok{(z, }\DataTypeTok{lower.tail =} \OtherTok{FALSE}\NormalTok{)}
+\KeywordTok{show}\NormalTok{(p)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.03674981
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{show}\NormalTok{(p }\OperatorTok{<}\StringTok{ }\FloatTok{0.05}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+Da der p-Wert unter 0.05 liegt, akzeptieren wir die Nullhypothese
+\(H_0\).
+
+\subparagraph{Kritischer Bereich:}\label{kritischer-bereich}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z <-}\StringTok{ }\KeywordTok{qnorm}\NormalTok{(}\FloatTok{0.025}\NormalTok{)}
+\NormalTok{lower <-}\StringTok{ }\NormalTok{z}\OperatorTok{*}\NormalTok{(s}\OperatorTok{/}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{length}\NormalTok{(x)))}\OperatorTok{+}\NormalTok{mu}
+\NormalTok{higher <-}\StringTok{ }\OperatorTok{-}\NormalTok{z}\OperatorTok{*}\NormalTok{(s}\OperatorTok{/}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{length}\NormalTok{(x)))}\OperatorTok{+}\NormalTok{mu}
+\end{Highlighting}
+\end{Shaded}
+
+Der kritische Bereich für \(alpha = 0.05\) ist:
+\(20.3035894 \leq \overline{x} \leq 21.6964106\). Das bedeutet, dass
+\(H_0\) gültig ist, solange der wahre Mittelwert in diesem Bereich
+liegt.
+
+
+\end{document}

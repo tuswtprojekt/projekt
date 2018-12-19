@@ -106,8 +106,10 @@ Parameter $\mu$ und $\sigma$:
   s <-  sd(x)
   curve(dnorm(x,m,s),add=TRUE,lwd=1, col="blue", to = 40)
 ```
+<br>
 </div>
-medv: <br>
+#### medv
+<br>
 mittlerer Wert von Wohneigentum in $ 1000. <br>
 Annäherung an Normalverteilung, aber rechtsschief (Schiefe > 0) und leptokurtisch (steilgipfelig) (Kurtosis > 3). <br>
 ```{r}
@@ -116,6 +118,31 @@ Annäherung an Normalverteilung, aber rechtsschief (Schiefe > 0) und leptokurtis
 ```
 rote Linie = Normalverteilung, blaue Linie = Normalverteilung von medv Werten < 50 (Ausreißer größer/gleich 50 weggeschnitten)
 <br>
-<div>Hypothesen:</div>
+<div>
+#####Hypothesen:  
+Annahme: Das Bevölkerungswachstun in Bosten wird in den nächsten Jahren weniger stark wachsen als in den Jahren zuvor und daher wird der angenommen, dass der mittlere Wert des Whohnungseigentums sinkt und deshhalb wird $\mu$ mit 21 angenommen.  
+n = $`r length(x)` \geq$ 30; Daher kann die Z-Statistik verwendet werden.  
+$\alpha = 5$%  
+$\overline{x} = `r m`$  
+$s = `r s`$  
+$H_0: \mu = 21$    
+$H_1: \mu \gt 21$    
+``` {r}
+mu <- 21
+z <- (m-mu)/(s/sqrt(length(x)))
+p <- pnorm(z, lower.tail = FALSE)
+show(p)
+show(p < 0.05)
+```
+Da der p-Wert unter 0.05 liegt, akzeptieren wir die Nullhypothese $H_0$.  
+
+##### Kritischer Bereich:
+``` {r}
+z <- qnorm(0.025)
+lower <- z*(s/sqrt(length(x)))+mu
+higher <- -z*(s/sqrt(length(x)))+mu
+```
+Der kritische Bereich für $alpha = 0.05$ ist: $`r lower` \leq \overline{x} \leq `r higher`$. Das bedeutet, dass $H_0$ gültig ist, solange der wahre Mittelwert in diesem Bereich liegt. 
+</div>
 <br>
 </div>
