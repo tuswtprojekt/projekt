@@ -1,3 +1,4 @@
+
 <table>
 <tr><td>
 <div style="padding: 20px">
@@ -19,7 +20,7 @@
 Crim beschreibt die Verbrechensrate pro Einwohner einer Stadt. Die Größe lässt sich gut mit einer Pareto-Verteilung beschreiben. Die Parameter errechnen sich wie folgt:
 $$ \hat \xi = min_{1 \leq i \leq n} \, x_i = 0.00632$$
 $$ \hat \lambda = \frac{n}{\sum_{i=1}^n log \Big ( \frac{x_i}{\hat \xi}\Big)} =  0.00645905 $$
-Die Pareto-Verteilung ereignet sich gut für Datensätze die sich über mehrere Größenordnungen erstrecken. Das ist hier der Fall, da $\frac{max}{min} \approx 14000$ ist. Die Paretto-Verteilund ist jedoch auf dem Interval $(0, \infty]$ definiert ist, und unsere Daten nur im Interval $[0, 100]$ auftreten können könnte man denken, dass hier auch eine Exponentialverteilung mit $\tau = \frac{1}{\overline X} = 0.2767382$ zur Beschreibung verwendet werden kann. Jedoch fällt diese Kurve zu schnell ab und die Verteilungsfunktion erzeugt bereits bei $F(17)$ Werte jenseits von 99%. Daher wird zu Beschreibung der Verteilung eine angepasste Pareto-Verteilung verwendet. Dabei wird die Verteilungsfunktion so konstruiert, dass $F(100) = 1$ gilt. Die normale Verteilungsfunktion $F_p$ hat den Wert $F_P(100) = 0.8953634$.
+Die Pareto-Verteilung ereignet sich gut für Datensätze die sich über mehrere Größenordnungen erstrecken. Das ist hier der Fall, da $\frac{max}{min} \approx 14000$ ist. Diese Paretto-Verteilund ist jedoch auf dem Interval $(0, \infty]$ definiert ist, und unsere Daten nur im Interval $[\hat \xi, 100]$ auftreten können könnte man denken, dass hier auch eine Exponentialverteilung mit $\tau = \frac{1}{\overline X} = 0.2767382$ zur Beschreibung verwendet werden kann. Jedoch fällt diese Kurve zu schnell ab und die Verteilungsfunktion erzeugt bereits bei $F(17)$ Werte jenseits von 99%. Daher wird zu Beschreibung der Verteilung eine angepasste Pareto-Verteilung verwendet. Dabei wird die Verteilungsfunktion so konstruiert, dass $F(100) = 1$ gilt. Die normale Verteilungsfunktion $F_p$ hat den Wert $F_P(100) = 0.8953634$.
 Nun konstruiert man die adjustierte Verteilungsfunktion $F = c F_p$, wobei $c$ der Reziprokwert von $F_P(100)$ ist. Daher gilt die Verteilungsfunktion
 $$F(n) = 1.116865 F_P(n)$$
 Die Dichtefunktion $F'(n)$ ist aufgrund der Linearität des Differenzialqoutienten $f(n) = 1.116865 f_P(n)$, wobei $f_P(n)$ die Dichtefunktion der Pareto-Verteilung mit den obigen Parametern ist.
@@ -32,10 +33,9 @@ Die Dichtefunktion $F'(n)$ ist aufgrund der Linearität des Differenzialqoutient
   hist(Boston$zn, main="Dichte von zn", freq = FALSE, nclass = 50)
 ```
 </div>
-Zn beschreibt den Anteil der Wohngrundstücke für Grundstücke mit mehr als 25.000 sq.ft. Es gibt viele 0-Werte (ca. 73%). Die restlichen Werte scheinen keiner konkreten Verteilung zu folgen. Am ehesten würden sich 2 weitere skalierte (Da diese maximal ~0.27 als Summe haben dürften) Binomialverteilungen mit den Mittelpunkten 20 und 80 eigenen, da es hier kleinere Spitzen in den Frequenzen gibt. Darüber hinaus könnte es auch eine Gleichverteilung im Intervall $[12.5; 100]$ sein.
+Zn beschreibt den Anteil der Wohngrundstücke für Grundstücke mit mehr als 25.000 sq.ft. Es gibt viele 0-Werte (ca. 73%). Die restlichen Werte scheinen keiner konkreten Verteilung zu folgen. Am ehesten würden sich 2 weitere skalierte (Da diese maximal ~0.27 als Summe haben dürften) Binomialverteilungen (die Werte für zn sind nur $z \in \{0, 1, ...99, 100\}$) mit den Mittelpunkten 20 und 80 eigenen, da es hier kleinere Spitzen in den Frequenzen gibt. Darüber hinaus könnte es auch eine Gleichverteilung im Intervall $[12.5; 100]$ sein.
 </div>
 </td></tr>
-<tr><td>Hypothesen:</td></tr>
 <tr><td>
 
 <div style="padding: 20px">
@@ -44,10 +44,9 @@ Zn beschreibt den Anteil der Wohngrundstücke für Grundstücke mit mehr als 25.
   hist(Boston$indus, main="Dichte von indus", freq = FALSE, nclass = 50)
 ```
 </div>
-Indus beschreibt den Anteil der Industriefläche pro Stadt. Wenn man sich das Datenset ansieht, kann man erkennen, dass Werte öfters vorkommen (zb. 18.10 kommt 132 Mal vor). Daher nehmen wir an, dass mehrere Vororte zu einem Industriegebiet zusammengefasst wurden. Für jeden Ort, der Teil eines Industriegebietes ist, wurde der Wert des gesamten Industriegebietes verwendet. Wenn diese Größe mit Hilfe einer Funktion beschrieben werden soll, dann würde sich eine skalierte Normalverteilung mit $\mu = 6$ und eine skalierte Exponential-Verteilung (oder ähnliches) ab ca. $18$. 
+Indus beschreibt den Anteil der Industriefläche pro Stadt. Wenn man sich das Datenset ansieht, kann man erkennen, dass Werte öfters vorkommen (zb. 18.10 kommt 132 Mal vor). Daher nehmen wir an, dass mehrere Vororte zu einem Industriegebiet zusammengefasst wurden. Für jeden Ort, der Teil eines Industriegebietes ist, wurde der Wert des gesamten Industriegebietes verwendet. Wenn diese Größe mit Hilfe einer Funktion beschrieben werden soll, dann würde sich eine skalierte Normalverteilung mit $\mu = 6$ und eine skalierte Exponential-Verteilung (oder ähnliches) ab ca. $18$.
 </div>
 </td></tr>
-<tr><td>Hypothesen:</td></tr>
 <tr><td>
 
 <div style="padding: 20px">
@@ -66,7 +65,6 @@ $$ \hat p = \frac{\hat p_t}{n} = 0.06916996$$
 Wobei $\hat p_t$ die Anzahl der erfolgreichen Experimente in der Stichprobe ist.
 </div>
 </td></tr>
-<tr><td>Hypothesen:</td></tr>
 <tr><td>
 
 <div style="padding: 20px">

@@ -1,0 +1,32 @@
+<div style="padding:10px">
+### Hypothese für Boston$rm
+
+Marty Walsh, Der Bürgermeister von Boston, weiß, dass im Jahr 1970 die durchschnittliche Raumanzahl der Vororte bei $6.15$ lag. Er möchte nun wissen, ob zur Zeit der Stichprobe, diese Behauptung noch gilt. Dabei soll $\alpha = 0.1$ verwendet werden. 
+
+Für die Verteilung von rm, gilt: $\hat \mu = 6.2846344$ und $s = 0.7026171$. $\mu = 6.15$, ist der angenommene Erwartungswert der Population (aus der Aufgabenstellung). Die Varianz der Population ist nicht gegeben. Da jedoch $n = 506 \geq 30$ ist, kann hier die Normalverteilung mit $\sigma = s$ verwendet werden. Daher kann eine Z-Statistik verwendet werden. 
+
+Die Hypothesen sind wie folgt: 
+$H_0: \mu = 5.8$
+$H_1: \mu \neq 5.8$
+
+Da es sich hier um einen beidseitigen Test handelt, bleibt die Nullhypothese bestehend, wenn $\hat \mu$ im 90%-Konfidenzintervall von $N(\mu, \sigma)$ liegt. 
+
+Dieses kann mit $\mu \pm z_{0.95} \frac{\sigma}{\sqrt n}$ berechnet werden.
+
+Lower Bound:
+```{r, echo=FALSE, result='hold'}
+6.15 - qnorm(0.95) * 0.7026171 / sqrt(506)
+```
+
+Upper Bound:
+```{r, echo=FALSE, result='hold'}
+6.15 + qnorm(0.95) * 0.7026171 / sqrt(506)
+```
+
+Das Konfidenzintervall ist $[6.098623, 6.201377]$. Damit liegt $\hat \mu$ nicht innerhalb und die Nullhypothese wird zugunsten von $H_1$ verworfen.
+
+### Hypothese für Boston$dis
+
+
+
+</div>
