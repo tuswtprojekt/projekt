@@ -22,7 +22,7 @@ library(moments)
   curve(dnorm(x,mittelwert,streuung),add=TRUE,lwd=1, col="red")
 ```
 </div>
-####ptratio:
+#### Boston$ptratio:
 <br>
 Schüler-Lehrer-Verhältnis nach Stadt.<br>
 Durch die density Funktion (schwarze Linie) kann man sehen und durch die Schiefe kann man berechnen, dass die Verteilungsform eher linksschief ist (Schiefe < 0)
@@ -51,7 +51,7 @@ Die Verteilung hat 2 Peaks: bei 14 bis 15 und 19 bis 20.5. <br>
   lines(dpareto(max(Boston$black):0, xi, l), col=3)
 ```
 </div>
-####black:
+#### Boston$black:
 <br>
 1000 (Bk - 0,63) ^ 2 wobei Bk der Schwarzanteil der Stadt ist.<br>
 Verteilung ist linksschief (Schiefe kleiner 0) und J-förmig. 
@@ -88,7 +88,8 @@ Berechnung des Paramters $\hat \xi$:
   qqline(Boston$lstat)
 ```
 </div>
-####lstat:
+
+#### Boston$lstat:
 <br>
 Prozentanteil der Bevölkerung mit niedriger Position in der sozialen Hierarchie. Dh. schlechte menschliche Lebensumstände (z.B.: wenig Bildung, keinen Schulabschluss, keine Ausbildung oder Studium, geringes Einkommen, Migrationshintergrund, ...)<br>
 Annahme: ptratio ist normalverteilt <br>
@@ -102,16 +103,6 @@ Parameter $\mu$ und $\sigma$:
 <br><br><br><br><br>
 </div>
 </div>
-</td></tr>
-
-<tr><td>
-#####Hypothesen:
-<br>
-Der Erwartungswert der Verteilung wird mit 11% angenommen, durch die aktuelle Fl?chtlingskrise, wird eine Vergr??erung des Prozentanteils der Bevölkerung mit niedriger Position in der sozialen Hierarchie erwartet.
-Um die Erwartung zu best?tigen oder wiederlegen wird ein rechtsseitiger Test durchgef?hrt: <br>
-$H_0 : \mu = 11$, $H_1 : \mu \gt 11$ <br>
-$Z_\alpha = `r zalpha`$, $Z= `r z`$ <br>
-Z liegt in der rejection region $[`r zalpha`, + \infty]$, daher wird die Nullhypothese verworfen.
 </td></tr>
 
 <tr><td>
@@ -131,7 +122,8 @@ Z liegt in der rejection region $[`r zalpha`, + \infty]$, daher wird die Nullhyp
   curve(dnorm(x,m,s),add=TRUE,lwd=1, col="blue", to = 40)
 ```
 </div>
-####medv
+
+####Boston$medv
 <br>
 mittlerer Wert von Wohneigentum in $ 1000. <br>
 Annäherung an Normalverteilung, aber rechtsschief (Schiefe > 0) und leptokurtisch (steilgipfelig) (Kurtosis > 3). <br>
@@ -143,31 +135,5 @@ rote Linie = Normalverteilung, blaue Linie = Normalverteilung von medv Werten < 
 <br>
 </div>
 </div>
-</td></tr>
-<tr><td>
-#####Hypothesen:  
-Annahme: Das Bevölkerungswachstun in Bosten wird in den nächsten Jahren weniger stark wachsen als in den Jahren zuvor und daher wird der angenommen, dass der mittlere Wert des Whohnungseigentums sinkt und deshhalb wird $\mu$ mit 21 angenommen.  
-n = $`r length(x)` \geq$ 30; Daher kann die Z-Statistik verwendet werden.  
-$\alpha = 5$%  
-$\overline{x} = `r m`$  
-$s = `r s`$  
-$H_0: \mu = 21$    
-$H_1: \mu \gt 21$    
-``` {r}
-mu <- 21
-z <- (m-mu)/(s/sqrt(length(x)))
-p <- pnorm(z, lower.tail = FALSE)
-show(p)
-show(p < 0.05)
-```
-Da der p-Wert unter 0.05 liegt, akzeptieren wir die Nullhypothese $H_0$.  
-
-##### Kritischer Bereich:
-``` {r}
-z <- qnorm(0.025)
-lower <- z*(s/sqrt(length(x)))+mu
-higher <- -z*(s/sqrt(length(x)))+mu
-```
-Der kritische Bereich für $alpha = 0.05$ ist: $`r lower` \leq \overline{x} \leq `r higher`$. Das bedeutet, dass $H_0$ gültig ist, solange der wahre Mittelwert in diesem Bereich liegt. 
 </td></tr>
 </table>

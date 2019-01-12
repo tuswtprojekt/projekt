@@ -1,0 +1,40 @@
+<div style="padding:10px">
+### Hypothese für Boston$medv
+
+Annahme: Das Bevölkerungswachstun in Bosten wird in den nächsten Jahren weniger stark wachsen als in den Jahren zuvor und daher wird der angenommen, dass der mittlere Wert des Whohnungseigentums sinkt und deshhalb wird $\mu$ mit 21 angenommen.  
+n = $`r length(x)` \geq$ 30; Daher kann die Z-Statistik verwendet werden.  
+$\alpha = 5$%  
+$\overline{x} = `r m`$  
+$s = `r s`$  
+$H_0: \mu = 21$    
+$H_1: \mu \gt 21$    
+``` {r}
+mu <- 21
+z <- (m-mu)/(s/sqrt(length(x)))
+p <- pnorm(z, lower.tail = FALSE)
+show(p)
+show(p < 0.05)
+```
+Da der p-Wert unter 0.05 liegt, akzeptieren wir die Nullhypothese $H_0$.  
+
+##### Kritischer Bereich:
+``` {r}
+z <- qnorm(0.025)
+lower <- z*(s/sqrt(length(x)))+mu
+higher <- -z*(s/sqrt(length(x)))+mu
+```
+Der kritische Bereich für $alpha = 0.05$ ist: $`r lower` \leq \overline{x} \leq `r higher`$. Das bedeutet, dass $H_0$ gültig ist, solange der wahre Mittelwert in diesem Bereich liegt. 
+
+
+### Hypothese für Boston$nox
+
+$T = \frac{1}{\sigma_0^2} \sum$
+$H_0$: $\sigma^2$ = $0.4^2$
+$H_1$: $\sigma^2$ < $0.4^2$
+n = $`r n`$  
+$\alpha = 5$ %  
+mlog: $`r abs(mlog)`$  
+slog: $`r slog`$  
+
+
+</div>

@@ -1,0 +1,14 @@
+<div style="padding:10px">
+### Hypothese für Boston$lstat
+
+Der Erwartungswert der Verteilung wird mit 11% angenommen, durch die aktuelle Fl?chtlingskrise, wird eine Vergr??erung des Prozentanteils der Bevölkerung mit niedriger Position in der sozialen Hierarchie erwartet.
+Um die Erwartung zu best?tigen oder wiederlegen wird ein rechtsseitiger Test durchgef?hrt: <br>
+$H_0 : \mu = 11$, $H_1 : \mu \gt 11$ <br>
+$Z_\alpha = `r zalpha`$, $Z= `r z`$ <br>
+Z liegt in der rejection region $[`r zalpha`, + \infty]$, daher wird die Nullhypothese verworfen.
+
+<br>
+
+### Hypothese für Boston$tax
+
+</div>

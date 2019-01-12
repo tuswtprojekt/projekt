@@ -89,18 +89,4 @@ Nox gibt die Konzentration von Stickstoff-Oxiden an. Die Größe scheint nicht g
 Um die Zufallsvariabel $Y$ analysieren zu können, wurde für jedes Element $x_i$ aus der Stichprobe $y_i = log(x_1)$ gesetzt. Der so gewonnene Datensatz repräsentiert nun eine Stichprobe der Zufallsvariable $Y$. 
 </div>
 </td></tr>
-<tr><td>
-
-#####Hypothesen:
-$T = \frac{1}{\sigma_0^2} \sum$
-$H_0$: $\sigma^2$ = $0.4^2$
-$H_1$: $\sigma^2$ < $0.4^2$
-n = $`r n`$  
-$\alpha = 5$ %  
-mlog: $`r abs(mlog)`$  
-slog: $`r slog`$  
-
-``` {r}
-```
-</td></tr>
 </table>

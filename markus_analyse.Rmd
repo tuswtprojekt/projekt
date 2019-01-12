@@ -4,7 +4,7 @@
 <div style="padding: 20px">
 <div style="float:left; position:relative; width:50%">
 ```{r echo=FALSE}
-  plot(density(Boston$rm), col=3, main="Dichte von rm") # normal
+  plot(density(Boston$rm), col=3, main="Dichte von rm") # paretto
   stripchart(Boston$rm,add=TRUE,pch=16,cex=.03,at=-0.00013,method="stack",col=8)
   m <- mean(Boston$rm)
   s <-  sd(Boston$rm)
@@ -16,17 +16,16 @@
 Der rm wert des Datensatzes boston beschreibt die durchschnittliche Nummer an Räumen von Wohnungen in Boston. Die Verteilung der Daten lässt sich gut mit einer Normalverteilung (siehe rote line) darstellen.
 Die Formel für die Normalverteilung ist: $$\frac{1}{\sigma\sqrt{2\pi}} * e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}$$
 Wobei $\mu \in \mathbb{R}$ den Mittelwert und $\sigma > 0$ die Varianz darstellet.
-Bei dieser Verteilung sind die Werte: $\mu$ = $`r m`$ und $\sigma$ = $`r s`$
+Bei dieser Verteilung sind die Werte: $\mu$ = 6.285 und $\sigma$ = 0.702
 </div>
 </div>
 </td></tr>
-<tr><td>Hypothesen:</td></tr>
 <tr><td>
 <!-- Boston$age -->
 <div style="padding: 20px">
 <div style="float:left; position:relative; width:50%">
 ```{r echo=FALSE}
-  hist(Boston$age, main="Dichte von age") #log normal
+  hist(Boston$age, main="Dichte von age") #f verteilung
   box() 
 ```
 </div>
@@ -58,10 +57,9 @@ qqline(sapply(Boston$dis, function(x) log(x)), col = "red", lwd = 2)
 <div style="margin-top: 5%">
 Der dis wert des Datensatzes Boston beschreibt den gewichteten Mittelwert der Entfernungen zu den fünf Bostoner Beschäftigungszentren. Die Verteilung der Daten lässt sich gut mit einer logarithmischen Normalverteilung beschreiben (siehe rote Line). Da die Werte auf der rechten Seite langsamer sinken als bei einer normalverteilung wird versucht die Kurve mittels einer logarithmischen Normalverteilung zu approximieren. Die Formel für die Logarithmische Normalverteilungist: $$ \frac{1}{\sigma x \sqrt{2\pi}}exp(-\frac{(ln(x)-\mu)^2}{2\sigma^2})  $$
 Die Transofmierte Zufallsvariable Y = ln(X) folgt ebenfalls einer Normalverteilung. (siehe qq norm dis)
-Die Werte dieser Funktion sind: $\mu$ = $`r mlog`$ und $\sigma$ = $`r slog`$
+Die Werte dieser Funktion sind: $\mu$ =1.203 und $\sigma$ = 0.559
 
 </tr></td>
-<tr><td>Hypothesen:</td></tr>
 <tr><td>
 <!-- Boston$rad -->
 <div style="padding: 20px">
@@ -76,31 +74,9 @@ Die Werte dieser Funktion sind: $\mu$ = $`r mlog`$ und $\sigma$ = $`r slog`$
 ```
 </div>
 <div style="margin-top: 5%">
-Der rad wert des Datensatzes Boston beschreibt die Zugänglichkeit zu radialen Autobahnen. Die Kurve auf der linken Seite lässt sich annähernd mit einer Normalverteilung beschreiben. Die Kurve auf der rechten Seite ist nur ein Wert und stellt somit keine Verteilung dar. Die Werte der Normalverteilung sind: $\mu$ = $`r m`$ und $\sigma$ = $`r s`$.
+Der rad wert des Datensatzes Boston beschreibt die Zugänglichkeit zu radialen Autobahnen. Die Kurve auf der linken Seite lässt sich annähernd mit einer Normalverteilung beschreiben. Die Kurve auf der rechten Seite ist nur ein Wert und stellt somit keine Verteilung dar. Die Werte der Normalverteilung sind: $\mu$ = 4.449 und $\sigma$ = 1.633.
 </div>
 </div>
-</td></tr>
-<tr><td>
-#####Hypothesen:  
-Annahme: Der offiziell angegebe Zugang zu radialen Autobahnen beträgt 5. Ein misstrauischer Bürger denkt, dass diese Angabe allerdings viel zu hoch ist und befragt daher $`r length(Boston$rad[Boston$rad <= 13])`$ Personen. Auf der Website wird zusätzlich angegeben, dass der reale Wert bis zu 5% von der Angabe abweichen kann.  
-``` {r echo = FALSE}
-mu <- 4.5
-n <- length(Boston$rad[Boston$rad <= 13])
-```
-n = $`r n` \geq$ 30; Daher kann die Z-Statistik verwendet werden.  
-$\alpha = 5$%  
-$\overline{x} = `r m`$  
-$s = `r s`$  
-$H_0: \mu = `r mu`$    
-$H_1: \mu \!= `r mu`$    
-``` {r}
-z <- (m-mu)/(s/sqrt(n))
-p <- 2*pnorm(z)
-show(p) # mal 2 für zweiseitigen test
-show(p < 0.05)
-```
-Da der p-Wert über 0.05 liegt, verwerfen wir die Nullhypothese $H_0$.  
-Der kritische Bereich für $alpha = 0.05$ ist: $`r lower` \leq \overline{x} \leq `r higher`$. Das bedeutet, dass $H_0$ gültig ist, solange der wahre Mittelwert in diesem Bereich liegt. 
 </td></tr>
 <tr><td>
 <!-- Boston$tax -->
@@ -120,5 +96,4 @@ Der tax Wert des Datensatzes Boston beschreibt den Immobiliensteuersatz in volle
 </div>
 </div>
 </td></tr>
-<tr><td>Hypothesen:</td></tr>
 </table>

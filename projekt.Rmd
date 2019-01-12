@@ -34,7 +34,8 @@ Für $\alpha$ haben wir bei unseren Hypothesen 5 % angenommen.
 
 #### Güte (Power)
 Die Güte (Power) gibt an, mit welcher Wahrscheinlichkeit ein statistischer Test die abzulehnende Nullhypothese $H_0$ („Es gibt keinen Unterschied“) korrekt zurückweist, wenn die Alternativhypothese $H_1$ („Es gibt einen Unterschied“) wahr ist. Die Güte des Tests kann also als „Ablehnungskraft“ des Tests interpretiert werden.
-### Analyse und berechnungen: 
+
+### Analyse und Berechnungen: 
 ```{r child = 'julia_analyse.Rmd'}
 ```
 ```{r child = 'tobias_analyse.Rmd'}
