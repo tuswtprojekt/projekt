@@ -1,30 +1,29 @@
 <div style="padding:10px">
 ### Hypothese für Boston$medv
-
-Annahme: Das Bevölkerungswachstun in Bosten wird in den nächsten Jahren weniger stark wachsen als in den Jahren zuvor und daher wird der angenommen, dass der mittlere Wert des Whohnungseigentums sinkt und deshhalb wird $\mu$ mit 21 angenommen.  
+Die Verwaltung von Bosten weiß, dass der Durchschnitt des durchschnittlichen Werts für Wohneigentum bei $`r mean(Boston$medv)`$ * 1000 Doller liegt. Es wird angenommen, dass das Bevölkerungswachstum in Bosten in den nächsten Jahren weniger stark wächst als in den Jahren zuvor und daher der mittlere Wert sinkt. Da auf der offiziellen Website ein Wert Durchschnittswert angegeben werden muss, welcher möglichst lange gültig sein soll wird $\mu$ = 22 verwendet. Ist dies bei einem $\alpha$ Wert von 10% zulässig ? <br>
+Des Weiteren würde die Verwaltung gerne wissen, in welchem Bereich diese Angabe verwendet werden kann. <br>
 n = $`r length(x)` \geq$ 30; Daher kann die Z-Statistik verwendet werden.  
 $\alpha = 5$%  
 $\overline{x} = `r m`$  
 $s = `r s`$  
-$H_0: \mu = 21$    
-$H_1: \mu \gt 21$    
+$H_0: \mu = 22$    
+$H_1: \mu \gt 22$    
 ``` {r}
-mu <- 21
-z <- (m-mu)/(s/sqrt(length(x)))
+m <- mean(Boston$medv)
+s <- sd(Boston$medv)
+mu <- 22
+z <- (m-mu)/(s/(sqrt(length(Boston$medv))))
 p <- pnorm(z, lower.tail = FALSE)
 show(p)
-show(p < 0.05)
+show(p < 0.1)
 ```
 Da der p-Wert unter 0.05 liegt, akzeptieren wir die Nullhypothese $H_0$.  
 
 ##### Kritischer Bereich:
 ``` {r}
-z <- qnorm(0.025)
-lower <- z*(s/sqrt(length(x)))+mu
-higher <- -z*(s/sqrt(length(x)))+mu
+z <- qnorm(0.05)
+lower <- z*(s/sqrt(length(Boston$medv)))+mu
+higher <- -z*(s/sqrt(length(Boston$medv)))+mu
 ```
 Der kritische Bereich für $alpha = 0.05$ ist: $`r lower` \leq \overline{x} \leq `r higher`$. Das bedeutet, dass $H_0$ gültig ist, solange der wahre Mittelwert in diesem Bereich liegt. 
-
-<!-- TODO: If we find a solution for log normal-->
-<!-- ### Hypothese für Boston$nox -->
 </div>
