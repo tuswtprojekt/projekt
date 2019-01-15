@@ -29,18 +29,28 @@ Das Konfidenzintervall ist $[6.098623, 6.201377]$. Damit liegt $\hat \mu$ nicht 
 
 ### Hypothese für Boston$dis
 
-Der/Die Verantworliche des Bostoner Arbeitsmarkt legt großen Wert darauf, dass Beschäftigungszentren für die meisten Menschen leicht erreichbar sind. Er/Sie möchte sich sicher sein, dass der mittlere errechnete Abstand nicht abgenommen hat. Weil es so ein Wichtiges Thema ist, werden beireits bei einer Verwerfung der Nullhypothese bei $\alpha = 0.25$ weitere Untersuchungen eingeleitet. 1970 lag der berechnete Mittelwert der Population bei $\mu = 1.1$. Die Varianz der Population ist unbekannt.
+Der/Die Verantworliche des Bostoner Arbeitsmarkt legt großen Wert darauf, dass Beschäftigungszentren für die meisten Menschen leicht erreichbar sind. Er/Sie möchte sich sicher sein, dass der mittlere errechnete Abstand nicht abgenommen hat. Da zur Zeit nur wenig Budget verfügbar ist, soll eine schnelle Berechnung durchgeführt werden, die eine Entscheidungsgrundlage bietet, ob weitere Untersuchungen notwendig sind. Da die Mittelwerte der Verteilung bei größeren $n$ normalverteilt sind, soll das aufgrund der Verteilung der Mittelwerte entschieden werden. Die damals gezogene Stichprobe (gleiches $n$) hatte $\overline X_o = 3.9$ und $\sigma_o^2 = 2.1^2$
 
-Für die gezogene Stichprobe gilt $\hat \mu = 1.2034487$ und $s = 0.5586292$.
+Für die gezogene Stichprobe gilt $\hat \mu = 3.795043$. Sie können davon ausgehen, dass $\sigma_o^2$ und $\sigma_n^2$ gleuch sind.
+
+Da es viele bei dieser Berechnung viele Unsicherheiten gibt, soll $\alpha = 0.2$ verwendet werden. Falls die Nullhypothese verworfen wird, folgen weitere Untersuchungen.
 
 Muss der/die Verantwortliche weitere Untersuchungen einleiten?
 
-Es werden folgende Hypothesen verwendet: 
+Es werden folgende Hypothesen für die Verteilung der Mittelwerte verwendet: 
 
-- $H_0: \mu = 1.1$
+- $H_0: \mu = 3.9$
 
-- $H_1: \mu < 1.1$
+- $H_1: \mu < 3.9$
 
-Da nur geprüft werden soll, ob die Distanz schlechter geworden ist, muss ein einseitiger Test verwendet werden. Da $n = 506 \geq 30$, kann die Varianz der Population der Varianz der Stichprobe gleichgesetzt werden (TODO: kann sie das?)
+Laut dem Zentralen Grenzwertsatz, der hier zum Einsatz kommen kann, weil $n = 506 \geq 30$ ist, sind die Mittelwerte einer solchen Stichproche $N(\mu, \sigma^2 / \sqrt n)$ verteilt. 
+
+```{r, results='markup'}
+# z-Wert
+(mean(Boston$dis) - 3.9) / (2.1 / sqrt(506))
+qnorm(0.2)
+```
+
+Der kritische Wert ist $-0.8416212$. Da die Rejection Region sich auf der linken Seite des kritischen Wertes ist und der z-Wert kleiner ist, wird die Nullhypothese verworfen. Es sollten weitere Untersuchungen angestellt werden.
 
 </div>
