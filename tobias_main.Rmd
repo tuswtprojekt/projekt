@@ -6,7 +6,9 @@ Marty Walsh, Der Bürgermeister von Boston, weiß, dass im Jahr 1970 die durchsc
 Für die Verteilung von rm, gilt: $\hat \mu = 6.2846344$ und $s = 0.7026171$. $\mu = 6.15$, ist der angenommene Erwartungswert der Population (aus der Aufgabenstellung). Die Varianz der Population ist nicht gegeben. Da jedoch $n = 506 \geq 30$ ist, kann hier die Normalverteilung mit $\sigma = s$ verwendet werden. Daher kann eine Z-Statistik verwendet werden. 
 
 Die Hypothesen sind wie folgt: 
+
 - $H_0: \mu = 5.8$
+
 - $H_1: \mu \neq 5.8$
 
 Da es sich hier um einen beidseitigen Test handelt, bleibt die Nullhypothese bestehend, wenn $\hat \mu$ im 90%-Konfidenzintervall von $N(\mu, \sigma^2)$ liegt. 
@@ -34,7 +36,9 @@ Für die gezogene Stichprobe gilt $\hat \mu = 1.2034487$ und $s = 0.5586292$.
 Muss der/die Verantwortliche weitere Untersuchungen einleiten?
 
 Es werden folgende Hypothesen verwendet: 
+
 - $H_0: \mu = 1.1$
+
 - $H_1: \mu < 1.1$
 
 Da nur geprüft werden soll, ob die Distanz schlechter geworden ist, muss ein einseitiger Test verwendet werden. Da $n = 506 \geq 30$, kann die Varianz der Population der Varianz der Stichprobe gleichgesetzt werden (TODO: kann sie das?)
