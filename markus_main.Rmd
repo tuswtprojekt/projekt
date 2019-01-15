@@ -17,7 +17,7 @@ p <- pnorm(z, lower.tail = FALSE)
 show(p)
 show(p < 0.1)
 ```
-Da der p-Wert unter 0.05 liegt, akzeptieren wir die Nullhypothese $H_0$.  
+Da der p-Wert unter 0.1 liegt, akzeptieren wir die Nullhypothese $H_0$.  
 
 ##### Kritischer Bereich:
 ``` {r}
