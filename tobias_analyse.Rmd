@@ -50,7 +50,7 @@ Indus beschreibt den Anteil der Industriefläche pro Stadt. Wenn man sich das Da
 <tr><td>
 
 <div style="padding: 20px">
-<div style="float:left; position:relative; width:50%">
+<div style="float:left; position:relative; width:50%; padding-right: 10px">
 Der Anteil der Städte aus der Stichprobe, welche am Charles River liegen.
 ```{r, echo=FALSE, result='hold'}
 print(length(Boston$chas[Boston$chas == 1]) / length(Boston$chas))
