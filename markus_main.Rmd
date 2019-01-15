@@ -25,16 +25,6 @@ higher <- -z*(s/sqrt(length(x)))+mu
 ```
 Der kritische Bereich für $alpha = 0.05$ ist: $`r lower` \leq \overline{x} \leq `r higher`$. Das bedeutet, dass $H_0$ gültig ist, solange der wahre Mittelwert in diesem Bereich liegt. 
 
-
-### Hypothese für Boston$nox
-
-$T = \frac{1}{\sigma_0^2} \sum$
-$H_0$: $\sigma^2$ = $0.4^2$
-$H_1$: $\sigma^2$ < $0.4^2$
-n = $`r n`$  
-$\alpha = 5$ %  
-mlog: $`r abs(mlog)`$  
-slog: $`r slog`$  
-
-
+<!-- TODO: If we find a solution for log normal-->
+<!-- ### Hypothese für Boston$nox -->
 </div>

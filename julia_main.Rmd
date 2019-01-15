@@ -8,13 +8,13 @@
 ```
 
 Der Erwartungswert der Verteilung wird mit 11% angenommen, durch die aktuelle Fl?chtlingskrise, wird eine Vergr??erung des Prozentanteils der Bev√∂lkerung mit niedriger Position in der sozialen Hierarchie erwartet.<br>
-Wird diese Erwartung bei einem Signifikantsniveau von 2.5% best‰tigt?<br>
+Wird diese Erwartung bei einem Signifikantsniveau von 2.5% best?tigt?<br>
 
-Um die Erwartung zu best‰tigen oder wiederlegen werden die folgenden Hypothesen aufgestellt:<br>
+Um die Erwartung zu best?tigen oder wiederlegen werden die folgenden Hypothesen aufgestellt:<br>
 $H_0 : \mu = 11$, $H_1 : \mu \gt 11$ (rechtsseitiger Test)<br>
-Wie oben festgestellt ist die Verteilung ann‰hernd normalverteilt, und es handelt sich um eine groﬂe Stichprobe
+Wie oben festgestellt ist die Verteilung ann?hernd normalverteilt, und es handelt sich um eine gro?e Stichprobe
 ($`r countLstat`$ Elemente). Daher kann man hier die Z-Statistik verwenden. <br>
-Die Erwartung kann best‰tigt werden, wenn $Z \gt Z_\alpha$ bzw. wenn Z im kritischen Bereich liegt.
+Die Erwartung kann best?tigt werden, wenn $Z \gt Z_\alpha$ bzw. wenn Z im kritischen Bereich liegt.
 kritischer Bereich:
 $Z_\alpha = `r zalpha`$, $[`r zalpha`, + \infty]$ <br>
 $Z= `r z`$ <br>
