@@ -79,11 +79,7 @@ Berechnung des Paramters $\hat \xi$:
   lines(density(rnorm(length(Boston$lstat), mittelwert, streuung)), col=4)
   x<-Boston$lstat
   curve(dnorm(x, mittelwert, streuung), add=TRUE, col=2)
-  
-  zalpha <- qnorm(0.05, lower.tail = FALSE)
-  z <- ((mittelwert - 11)/(streuung/sqrt(length(Boston$lstat))))
-```
-```{r, echo=FALSE}
+
   qqnorm(Boston$lstat)
   qqline(Boston$lstat)
 ```
