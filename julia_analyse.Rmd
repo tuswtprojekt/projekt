@@ -20,8 +20,8 @@ library(moments)
 #### Boston$ptratio:
 <br>
 Schüler-Lehrer-Verhältnis nach Stadt.<br>
-Durch die density Funktion (schwarze Linie) kann man sehen und durch die Schiefe kann man berechnen, dass die Verteilungsform eher linksschief ist (Schiefe < 0)
-Anfangs angenommen es ist normalverteilt, aber man sieht, dass das nicht so ist. <br>
+Durch die density Funktion (schwarze Linie) kann man sehen und durch die Schiefe kann man berechnen, dass die Verteilungsform eher linksschief ist (Schiefe < 0). <br>
+Anfangs angenommen es ist normalverteilt, aber man sieht, dass das nicht so ist.<br>
 blaue Linie = rnorm density; rote Linie = dnorm <br>
 Die Verteilung hat 2 Peaks: bei 14 bis 15 und 19 bis 20.5. <br>
 5 (bzw. 6) Zahlen Zusammenfassung: <br>
@@ -49,14 +49,14 @@ Die Verteilung hat 2 Peaks: bei 14 bis 15 und 19 bis 20.5. <br>
 #### Boston$black:
 <br>
 1000 (Bk - 0,63) ^ 2 wobei Bk der Schwarzanteil der Stadt ist.<br>
-Verteilung ist linksschief (Schiefe kleiner 0) und J-förmig. 
+Verteilung ist linksschief (Schiefe kleiner 0). 
 ```{r}
   skewness(Boston$black)
 ```
 </td></tr>
 <tr><td>
 Annäherung an Paetro-Verteilung mit Intervall $[0, \infty]$
-Die Paetro-Verteilung (grüne Linie) hat hier die meisten Vorkommen bei den höheren Werten <br>
+Die Paetro-Verteilung (grüne Linie) hat hier die meisten Vorkommen bei den höheren Werten.<br>
 Berechnung des Paramters $\hat \xi$:
 ```{r}
   min(Boston$black)
@@ -118,7 +118,7 @@ Parameter $\mu$ und $\sigma$:
 
 ####Boston$medv
 <br>
-mittlerer Wert von Wohneigentum in $ 1000. <br>
+mittlerer Wert von Wohneigentum in $1000. <br>
 Annäherung an Normalverteilung, aber rechtsschief (Schiefe > 0) und leptokurtisch (steilgipfelig) (Kurtosis > 3). <br>
 ```{r}
   skewness(Boston$medv)
