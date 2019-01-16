@@ -1,5 +1,5 @@
 <div style="padding:10px">
-### Hypothese fÃ¼r Boston$lstat
+### Hypothese für Boston$lstat
 
 ```{r, echo=FALSE}
   zalpha25 <- qnorm(0.025, lower.tail = FALSE)
@@ -21,7 +21,7 @@ Z liegt in dieser kristischen Region, daher wird die Nullhypothese verworfen.
 
 <br>
 
-### Hypothese fÃ¼r Boston\$lstat (Boston\$ptratio vorgegeben)
+### Hypothese für Boston\$lstat (Boston\$ptratio vorgegeben)
 ```{r, echo=FALSE}
   ptratioPlus19 <- Boston[which(Boston$ptratio >= 19) , ]
   ptratioMinus19 <- Boston[which(Boston$ptratio < 19) , ]
