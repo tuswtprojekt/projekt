@@ -2,26 +2,58 @@
 ### Hypothese f√ºr Boston$lstat
 
 ```{r, echo=FALSE}
-  zalpha <- qnorm(0.025, lower.tail = FALSE)
+  zalpha25 <- qnorm(0.025, lower.tail = FALSE)
   countLstat <- length(Boston$lstat)
-  z <- ((mittelwert - 11)/(streuung/sqrt(countLstat)))
+  zlstat <- ((mittelwert - 11)/(streuung/sqrt(countLstat)))
 ```
 
+<<<<<<< Updated upstream
 Der Erwartungswert der Verteilung wird mit 11% angenommen, durch die aktuelle Fl?chtlingskrise, wird eine Vergr??erung des Prozentanteils der Bev√∂lkerung mit niedriger Position in der sozialen Hierarchie erwartet.<br>
 Wird diese Erwartung bei einem Signifikantsniveau von 2.5% best?tigt?<br>
+=======
+Der Erwartungswert der Verteilung wird mit 11% angenommen, durch die aktuelle Fl?chtlingskrise, wird eine Vergrˆﬂerung des Prozentanteils der Bev√∂lkerung mit niedriger Position in der sozialen Hierarchie erwartet.<br>
+Wird diese Erwartung bei einem Signifikantsniveau von 2.5% best‰tigt?<br>
+>>>>>>> Stashed changes
 
 Um die Erwartung zu best?tigen oder wiederlegen werden die folgenden Hypothesen aufgestellt:<br>
 $H_0 : \mu = 11$, $H_1 : \mu \gt 11$ (rechtsseitiger Test)<br>
 Wie oben festgestellt ist die Verteilung ann?hernd normalverteilt, und es handelt sich um eine gro?e Stichprobe
 ($`r countLstat`$ Elemente). Daher kann man hier die Z-Statistik verwenden. <br>
+<<<<<<< Updated upstream
 Die Erwartung kann best?tigt werden, wenn $Z \gt Z_\alpha$ bzw. wenn Z im kritischen Bereich liegt.
 kritischer Bereich:
 $Z_\alpha = `r zalpha`$, $[`r zalpha`, + \infty]$ <br>
 $Z= `r z`$ <br>
+=======
+Die Erwartung kann best‰tigt werden, wenn $Z \gt Z_\alpha$ bzw. wenn Z im kritischen Bereich liegt.
+kritischer Bereich: $[`r zalpha25`, + \infty]$ <br>
+$Z= `r zlstat`$ <br>
+>>>>>>> Stashed changes
 Z liegt in dieser kristischen Region, daher wird die Nullhypothese verworfen.
 
 <br>
 
-### Hypothese f√ºr Boston$tax
+### Hypothese f√ºr Boston\$lstat (Boston\$ptratio vorgegeben)
+```{r, echo=FALSE}
+  ptratioPlus19 <- Boston[which(Boston$ptratio >= 19) , ]
+  ptratioMinus19 <- Boston[which(Boston$ptratio < 19) , ]
+  zalpha5 <- qnorm(0.01, lower.tail = TRUE)
+  zlstatptratio <- (mean(ptratioMinus19$lstat)-mean(ptratioPlus19$lstat))/sqrt((sd(ptratioMinus19$lstat)/nrow(ptratioMinus19))+(sd(ptratioPlus19$lstat)/nrow(ptratioPlus19)))
+```
 
+Ich teile den Datensatz Boston auf, sodass der 1. Teil ein Sch¸ler-Lehrer Verh‰ltnis pro Stadt von kleiner 19 haben und der 2. Teil ein Sch¸ler-Lehrer Verh‰ltnis pro Stadt grˆﬂer gleich 19 (ptratio - nach Mittelwert aufgeteilt)
+```{r}
+  mean(Boston$ptratio)
+```
+
+Dadurch erh‰lt man im 1. Teil `r nrow(ptratioMinus19)` St‰dte und im 2. Teil `r nrow(ptratioPlus19)` St‰dte.
+Basierend auf der Stichprobe  betr‰gt der durchschnittliche Prozentanteil der Bev√∂lkerung mit niedriger Position in der sozialen Hierarchie im 1. Teil `r mean(ptratioMinus19$lstat)` und im 2. Teil `r mean(ptratioPlus19$lstat)`. ($\hat x_1 und \hat x_2$)
+Nun wollen wir sehen ob bei einem gegebenen Signifikantsniveau von 1% der Durchschnitt des Prozentanteils der Bev√∂lkerung mit niedriger Position in der sozialen Hierarchie des ersten Teils niedriger ist als der des 2. Teils ($\mu_1 und \mu_2$).
+
+$H_0 : \mu_1 = \mu_2$, $H_1 : \mu_1 < \mu_2$ (linksseitiger Test)
+Wie oben festgestellt ist Boston\$lstat ann‰hernd normalverteilt, es handelt sich um groﬂe Stichproben ($`r countLstat`$ Elemente) und die 2 Teile sind unabh‰ngig voneinander.  Daher kann man hier die Z-Statistik verwenden. (mit der Formel f¸r unbekannte Standardabweichungen)
+
+Die Nullhypothese kann verworfen werden, wenn $Z < Z_\alpha$ bzw. wenn Z im kritischen Bereich liegt.
+kritischer Bereich: $[- \infty, `r zalpha5`]$
+Es wurde berechnet, dass Z = `r zlstatptratio`. Dieser Wert f‰llt in die rejection region und die Nullhypothese wird daher verworfen. Somit kann best‰tigt werden, dass in St‰dte mit einem Sch¸ler-Lehrer Verh‰ltnis kleiner 19, der Durchschnitt des Prozentanteils der Bev√∂lkerung mit niedriger Position in der sozialen Hierarchie auch kleiner ist als in St‰dten mit einem Sch¸ler-Lehrer Verh‰ltnis grˆﬂer gleich 19.
 </div>
