@@ -53,6 +53,8 @@ Verteilung ist linksschief (Schiefe kleiner 0) und J-förmig.
 ```{r}
   skewness(Boston$black)
 ```
+</td></tr>
+<tr><td>
 Annäherung an Paetro-Verteilung mit Intervall $[0, \infty]$
 Die Paetro-Verteilung (grüne Linie) hat hier die meisten Vorkommen bei den höheren Werten <br>
 Berechnung des Paramters $\hat \xi$:

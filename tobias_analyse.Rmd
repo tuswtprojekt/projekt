@@ -20,7 +20,12 @@
 Crim beschreibt die Verbrechensrate pro Einwohner einer Stadt. Die Größe lässt sich gut mit einer Pareto-Verteilung beschreiben. Die Parameter errechnen sich wie folgt:
 $$ \hat \xi = min_{1 \leq i \leq n} \, x_i = 0.00632$$
 $$ \hat \lambda = \frac{n}{\sum_{i=1}^n log \Big ( \frac{x_i}{\hat \xi}\Big)} =  0.00645905 $$
-Die Pareto-Verteilung ereignet sich gut für Datensätze die sich über mehrere Größenordnungen erstrecken. Das ist hier der Fall, da $\frac{max}{min} \approx 14000$ ist. Diese Paretto-Verteilund ist jedoch auf dem Interval $(0, \infty]$ definiert ist, und unsere Daten nur im Interval $[\hat \xi, 100]$ auftreten können könnte man denken, dass hier auch eine Exponentialverteilung mit $\tau = \frac{1}{\overline X} = 0.2767382$ zur Beschreibung verwendet werden kann. Jedoch fällt diese Kurve zu schnell ab und die Verteilungsfunktion erzeugt bereits bei $F(17)$ Werte jenseits von 99%. Daher wird zu Beschreibung der Verteilung eine angepasste Pareto-Verteilung verwendet. Dabei wird die Verteilungsfunktion so konstruiert, dass $F(100) = 1$ gilt. Die normale Verteilungsfunktion $F_p$ hat den Wert $F_P(100) = 0.8953634$.
+</td></tr>
+<tr><td>
+Die Pareto-Verteilung ereignet sich gut für Datensätze die sich über mehrere Größenordnungen erstrecken. Das ist hier der Fall, da $\frac{max}{min} \approx 14000$ ist. Diese Paretto-Verteilund ist jedoch auf dem Interval $(0, \infty]$ definiert ist, und unsere Daten nur im Interval $[\hat \xi, 100]$ auftreten können könnte man denken, dass hier auch eine Exponentialverteilung mit $\tau = \frac{1}{\overline X} = 0.2767382$ zur Beschreibung verwendet werden kann. Jedoch fällt diese Kurve zu schnell ab und die Verteilungsfunktion erzeugt bereits bei $F(17)$ Werte jenseits von 99%. 
+Daher wird zu Beschreibung der Verteilung eine angepasste Pareto-Verteilung verwendet. Dabei wird die Verteilungsfunktion so konstruiert, dass $F(100) = 1$ gilt. Die normale Verteilungsfunktion $F_p$ hat den Wert $F_P(100) = 0.8953634$.
+</td></tr>
+<tr><td>
 Nun konstruiert man die adjustierte Verteilungsfunktion $F = c F_p$, wobei $c$ der Reziprokwert von $F_P(100)$ ist. Daher gilt die Verteilungsfunktion
 $$F(n) = 1.116865 F_P(n)$$
 Die Dichtefunktion $F'(n)$ ist aufgrund der Linearität des Differenzialqoutienten $f(n) = 1.116865 f_P(n)$, wobei $f_P(n)$ die Dichtefunktion der Pareto-Verteilung mit den obigen Parametern ist.
