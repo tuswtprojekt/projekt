@@ -27,7 +27,11 @@ Daher wird zu Beschreibung der Verteilung eine angepasste Pareto-Verteilung verw
 </td></tr>
 <tr><td>
 Nun konstruiert man die adjustierte Verteilungsfunktion $F = c F_p$, wobei $c$ der Reziprokwert von $F_P(100)$ ist. Daher gilt die Verteilungsfunktion
-$$F(n) = 1.116865 F_P(n)$$
+
+* wenn $n < \hat \xi$: $F(n) = 0$
+* wenn $n \in [\hat \xi, 100]$: $F(n) = 1.116865 F_P(n)$
+* wenn $n > 100$: $F(n) = 1$
+
 Die Dichtefunktion $F'(n)$ ist aufgrund der Linearität des Differenzialqoutienten $f(n) = 1.116865 f_P(n)$, wobei $f_P(n)$ die Dichtefunktion der Pareto-Verteilung mit den obigen Parametern ist.
 </div>
 </td></tr>
