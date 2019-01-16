@@ -49,17 +49,24 @@ Der age wert des Datensatzes Boston beschreibt den Anteil der Eigentumswohnungen
   curve(dlnorm(x, meanlog = mlog, sdlog = slog, log = FALSE),add=TRUE,lwd=1, col="red")
   box() 
 ```
+</div>
+<div style="margin-top: 5%">
+Der dis wert des Datensatzes Boston beschreibt den gewichteten Mittelwert der Entfernungen zu den fünf Bostoner Beschäftigungszentren. Die Verteilung der Daten lässt sich gut mit einer logarithmischen Normalverteilung beschreiben (siehe rote Line). Da die Werte auf der rechten Seite langsamer sinken als bei einer normalverteilung wird versucht die Kurve mittels einer logarithmischen Normalverteilung zu approximieren. Die Formel für die Logarithmische Normalverteilungist: $$ \frac{1}{\sigma x \sqrt{2\pi}}exp(-\frac{(ln(x)-\mu)^2}{2\sigma^2})  $$
+</div>
+</tr></td>
+<tr><td>
+<div style="float:left; position:relative; width:50%">
 ``` {r echo = FALSE}
 qqnorm(sapply(Boston$dis, function(x) log(x)), main="qq norm dis")
 qqline(sapply(Boston$dis, function(x) log(x)), col = "red", lwd = 2)
 ```
 </div>
-<div style="margin-top: 5%">
-Der dis wert des Datensatzes Boston beschreibt den gewichteten Mittelwert der Entfernungen zu den fünf Bostoner Beschäftigungszentren. Die Verteilung der Daten lässt sich gut mit einer logarithmischen Normalverteilung beschreiben (siehe rote Line). Da die Werte auf der rechten Seite langsamer sinken als bei einer normalverteilung wird versucht die Kurve mittels einer logarithmischen Normalverteilung zu approximieren. Die Formel für die Logarithmische Normalverteilungist: $$ \frac{1}{\sigma x \sqrt{2\pi}}exp(-\frac{(ln(x)-\mu)^2}{2\sigma^2})  $$
+<div>
 Die Transofmierte Zufallsvariable Y = ln(X) folgt ebenfalls einer Normalverteilung. (siehe qq norm dis)
 Die Werte dieser Funktion sind: $\mu$ =1.203 und $\sigma$ = 0.559
-
-</tr></td>
+</div>
+</div>
+</td></tr>
 <tr><td>
 <!-- Boston$rad -->
 <div style="padding: 20px">
